@@ -9,9 +9,10 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 /*******************************************************************
- * 该JavaBean可以直接在其他Java应用程序中调用，实现屏幕的"拍照" This JavaBean is used to snapshot the
- * GUI in a Java application! You can embeded it in to your java application
- * source code, and us it to snapshot the right GUI of the application
+ * 该JavaBean可以直接在其他Java应用程序中调用，实现屏幕的"拍照" 
+ * This JavaBean is used to snapshot the GUI in a Java application! 
+ * You can embeded it in to your java application source code, 
+ * and us it to snapshot the right GUI of the application
  * 
  * @see javax.ImageIO
  * @author liluqun ([email]liluqun@263.net[/email])
@@ -28,8 +29,10 @@ public class GuiCamera {
 	Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 	/****************************************************************
-	 * 默认的文件前缀为GuiCamera，文件格式为PNG格式 The default construct will use the default
-	 * Image file surname "GuiCamera", and default image format "png"
+	 * 默认的文件前缀为GuiCamera，文件格式为PNG格式
+	 * The default construct will use the default
+	 * Image file surname "GuiCamera", 
+	 * and default image format "png"
 	 ****************************************************************/
 	public GuiCamera() {
 		fileName = defaultName;
@@ -51,7 +54,8 @@ public class GuiCamera {
 	}
 
 	/****************************************************************
-	 * 对屏幕进行拍照 snapShot the Gui once
+	 * 对屏幕进行拍照
+	 * snapShot the Gui once
 	 ****************************************************************/
 	public void snapShot() {
 
