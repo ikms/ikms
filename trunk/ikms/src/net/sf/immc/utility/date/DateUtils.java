@@ -8,7 +8,6 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +16,9 @@ import org.slf4j.LoggerFactory;
  * 时间日期工具类
  * 
  * @author <b>Oxidy</b>, Copyright &#169; 2007-2010
- * @version 0.1, 2009/12/21
- * @version 0.2, 2009/12/22
+ * @version 0.1, 2009/12/06
+ * @version 0.2, 2009/12/21
+ * @version 0.3, 2009/12/22
  */
 public class DateUtils {
 	
@@ -60,7 +60,7 @@ public class DateUtils {
      * @return java.util.Date类型时间
      * @version 0.1,2010/01/26
      */
-    public static Date getCurrDateTimeDate() {
+    public static Date getCurrDate() {
     	Date dateTime = getCurrentDateTimeDate();
 		return formatTypeDate(dateTime, DateConst.standard_simple_format);
 	}
@@ -190,7 +190,7 @@ public class DateUtils {
      * @return	转换并按照pattern模式格式化后的java.util.Date类型日期
      * @version 0.1,2010/01/26
      */
-    public static Date coverStringToDate(String strDate,String pattern){
+    public static Date convertStringToDate(String strDate,String pattern){
     	if (strDate == null || "".equals(strDate)) {
 			strDate = "1900-01-01 00:00:00";
 		}
@@ -213,7 +213,7 @@ public class DateUtils {
      * @return	格式化并转化为String类型的字符串
      * @version 0.1,2010/01/26
      */
-    public static String coverDateToString(Date date,String pattern){
+    public static String convertDateToString(Date date,String pattern){
     	//方法一
     	//SimpleDateFormat format = new SimpleDateFormat(pattern);
     	//return format.format(date);
@@ -230,7 +230,7 @@ public class DateUtils {
      * @return	格式化并转化为String类型的字符串
      * @version 0.1,2010/01/26
      */
-    public static String coverDateToString(Date date,String pattern,Locale locale){
+    public static String convertDateToString(Date date,String pattern,Locale locale){
     	return formatTypeString(date, pattern,locale);
     }
     

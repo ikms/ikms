@@ -10,7 +10,7 @@ package net.sf.immc.utility.date;
  * @author <b>Oxidy</b>, Copyright &#169; 2007-2010
  * @version 0.1,2010/06/07
  */
-public abstract class DateConst {
+public class DateConst {
 
 	/**
 	 * 标准格式：yyyy-MM-dd HH:mm:ss，示例：2009-01-26 07:35:48
