@@ -3,8 +3,11 @@
  */
 package net.sf.immc.utility.string;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import net.sf.immc.utility.UtilityConstKeys;
 
 /**
  * String字符串相关操作方法，同时扩展了org.apache.commons.lang.StringUtils所有方法
@@ -92,9 +95,11 @@ public class StringUtils extends org.apache.commons.lang.StringUtils  {
      * @param message
      *            要替换的message信息
      * @return 如果不为空或NULL，则返回str； 如果为空或NULL，则返回message
+     * @deprecated use {@link #isBlankToStr(String, String)} instead
      * @version 0.1, 2010/01/05
+     * @version 0.2, 2011/03/24
      */
-    public static String emptyOrNullToMessage(String str, String message) {
+    public static String emptyOrNullToMessage(String str, String message) { 
         if (str == null || str.trim().length() <= 0) {
             return message;
         } else {
@@ -193,7 +198,7 @@ public class StringUtils extends org.apache.commons.lang.StringUtils  {
      * @author zhangyj
      * @version 0.1,2010/01/26
      */
-    public static String backSlashToSlash(String str){
+    public static String convertBackSlashToSlash(String str){
 		return str.replaceAll("\\\\", "/");
     }
     
@@ -206,7 +211,7 @@ public class StringUtils extends org.apache.commons.lang.StringUtils  {
      * @author zhangyj
      * @version 0.1,2010/01/26
      */
-    public static String slashToBackSlash(String str){
+    public static String convertSlashToBackSlash(String str){
 		return str.replaceAll("/", "\\\\");
     }
     
@@ -250,4 +255,51 @@ public class StringUtils extends org.apache.commons.lang.StringUtils  {
 		}
 		return str;
 	}
+	
+    /**
+     * 将byte[]转化为String,默认使用GBK编码格式转换，编码格式应该与页面编码格式相同。
+     * 
+     * @param param
+     *            byte[]
+     * @param encoding
+     *            String
+     * @return String
+     * @author zhangyj
+     * @version v0.1 2009-12-09 <BR/>
+     *          v0.2 2009-12-15 修正param==null时出错的问题
+     */
+    public static String convertByteArrayToString(byte[] param,String encoding) {
+
+        String returnstring = null;
+        if (param == null) {
+            return returnstring = "";
+        } else {
+            if (isBlank(encoding)) {//判断默认编码格式
+                encoding = UtilityConstKeys.GBK;
+            }
+            ByteArrayInputStream in = new ByteArrayInputStream(param);
+            int len = in.available();
+            byte[] buffin = new byte[len];
+            try {
+                in.read(buffin);
+                in.close();
+                returnstring = new String(buffin, 0, len, encoding);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return returnstring;
+    }
+    /**
+     * 将String转化为byte[]
+     * 
+     * @param param
+     *            String
+     * @return byte[]
+     * @author zhangyj
+     * @version v0.1 2009-12-09
+     */
+    public static byte[] convertStringToByteArray(String param) {
+        return param.getBytes();
+    }
 }
