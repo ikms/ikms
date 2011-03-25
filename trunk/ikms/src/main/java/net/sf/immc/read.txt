@@ -1,0 +1,40 @@
+Utils工具包规划
+
+	时间日期Utils
+		----格式化时间日期
+	文件操作 Utils
+		----读取文件内容,创建文件,修改文件,删除文件[jsp,xml,properties],目录的创建,改名,删除
+	操作XML Utils
+		----建立,读取,检索xml文件
+	文件上传下载Utils
+		----上传/下载,文件大小控制,类型控制,断点续传,[zip,图片,]
+	校验Utils
+		----是否为数字,是否为空或者null,日期格式,身份证号,Email,URL,image,/
+	安全Utils
+		----图形校验码/加密(可逆、不可逆)/解密
+	字符串utils
+		----比较,截取,替换,随机串的生成,GUID的生成,对字符串进行编码,html标签转化,
+	分页 Utils
+		----跳转,上一页,下一页,首页,尾页,总页数,当前页数
+	过滤器Utils
+		----字符编码过滤
+	IP获取Utils
+	域名解析Utils
+	虚拟路径Utils
+	端口Utils
+	Mac获取Utils
+	版本 Utils
+	日志管理Utils
+	
+	
+	FilesUtils
+	DateTimeUtils
+	StringUtils
+	PageUtils
+	SecurityUtils
+	VersionUtils
+	LogsUtils
+	FilterUitls
+	
+	
+	
