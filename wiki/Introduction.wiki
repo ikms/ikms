@@ -1,0 +1,13 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+使用Java Framework 开发一套用于自己的设想的一个程序。其中包括自己的知识管理，理财管理，软件管理等与自己生活息息相关的管理程序
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
