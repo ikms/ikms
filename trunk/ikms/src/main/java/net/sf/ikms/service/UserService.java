@@ -9,7 +9,7 @@ import net.sf.ikms.domain.User;
  * @author Oxidy
  *
  */
-public interface UserMapper {
+public interface UserService {
 
 	User getUser(String userId);
 }

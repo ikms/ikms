@@ -4,9 +4,8 @@
 package net.sf.ikms.test;
 
 import net.sf.ikms.domain.User;
-import net.sf.ikms.service.impl.UserService;
+import net.sf.ikms.service.impl.UserServiceImpl;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -15,7 +14,7 @@ import org.junit.Test;
  */
 public class UserTest {
 
-	UserService userService = null;
+	UserServiceImpl userService = null;
 	
 	@Test
 	public void testGetUser() {

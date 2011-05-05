@@ -1,22 +1,25 @@
 package net.sf.ikms.service.impl;
 
 import net.sf.ikms.domain.User;
-import net.sf.ikms.service.UserMapper;
+import net.sf.ikms.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Oxidy
+ * 
+ * 
+ * @author zhangyj
+ * @version 0.1, 2011-5-5 下午05:27:32
  *
  */
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserMapper userMapper;
+	private UserService userService;
 	
 	public User getUser(String userId){
-		return userMapper.getUser(userId);
+		return userService.getUser(userId);
 	}
 }
