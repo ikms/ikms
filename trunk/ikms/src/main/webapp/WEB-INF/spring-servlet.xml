@@ -51,18 +51,20 @@
     	<property name="maxIdle" value="${jdbc.maxIdle}"/>
     	<property name="defaultAutoCommit" value="false"/>
     </bean>
-    
-    <!-- in-memory database and a datasource --><!-- 
-    <jdbc:embedded-database id="dataSource">
-        <jdbc:script location="classpath:database/jpetstore-hsqldb-schema.sql"/>
-        <jdbc:script location="classpath:database/jpetstore-hsqldb-dataload.sql"/>
-    </jdbc:embedded-database> -->
 
 	<!-- MyBatis Session -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" lazy-init="true">
 		<property name="dataSource" ref="dataSource" />
+		<!--  
+		        该属性用来指定MyBatis的XML配置文件路径,跟Spring整合时，编写MyBatis映射文件的目的无非是配置一下typeAlias、setting之类的  
+		        元素。不用在其中指定数据源，或者事务处理方式。就算配置了也会被忽略。因为这些都是使用Spring中的配置  
+		        。当然如果你不打算添加typeAlias 之类的设置的话，你连MyBatis的配置文件都不用写，更不用配置这个属性了  
+		--> 
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		
+		<!-- 该配置文件用来指定Mapper映射文件的位置 ，如果映射文件与相应的接口同名，且在同一路径下，那么可以不配置该选项-->  
 		<property name="mapperLocations" value="classpath:net/sf/ikms/sqlmappers/*.xml" />
+		
 		<!-- 如果你想使用CMT，而不想使用Spring的事务管理，你就必须配置SqlSessionFactoryBean来使用
 			   基本的MyBatis的ManagedTransactionFactory而不是其它任意的Spring事务管理器 -->
 	    <!-- 
@@ -75,9 +77,11 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 		<!--<constructor-arg index="1" value="BATCH"/>--><!-- 支持批量操作 -->
 	</bean>
+	<!-- 注册Mapper方式二：也可不指定特定mapper，而使用自动扫描包的方式来注册各种Mapper ，配置如下：-->  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="net.sf.ikms.service.impl" />
+		<property name="basePackage" value="net.sf.ikms.service" />
 	</bean>
+	
 	<!-- transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -97,4 +101,10 @@
 		<property name="transactionManager" ref="transactionManager" />
 	</bean>
      -->
+         
+    <!-- in-memory database and a datasource --><!-- 
+    <jdbc:embedded-database id="dataSource">
+        <jdbc:script location="classpath:database/jpetstore-hsqldb-schema.sql"/>
+        <jdbc:script location="classpath:database/jpetstore-hsqldb-dataload.sql"/>
+    </jdbc:embedded-database> -->
 </beans>

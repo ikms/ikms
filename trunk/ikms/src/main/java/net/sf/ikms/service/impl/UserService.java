@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.sf.ikms.service.impl;
 
 import net.sf.ikms.domain.User;

@@ -16,12 +16,7 @@ import org.junit.Test;
 public class UserTest {
 
 	UserService userService = null;
-
-	@Before
-	public void set() {
-
-	}
-
+	
 	@Test
 	public void testGetUser() {
 		try {
