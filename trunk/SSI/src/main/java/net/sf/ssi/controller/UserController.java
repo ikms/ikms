@@ -1,8 +1,7 @@
-/**
- * 
- */
 package net.sf.ssi.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/usercenter")
 public class UserController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@RequestMapping(value="/getInfo",method=RequestMethod.GET)
     public String getInfo(@RequestParam("userId") String id,Model model){
 		model.addAttribute("user",id);
+		logger.info("=="+id+"==");
     	return "userInfo";
     }
 	@RequestMapping(value="/getInfo2/{userId}")
