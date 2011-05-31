@@ -5,7 +5,7 @@ package net.sf.ssi.service.impl;
 
 import net.sf.ssi.domain.User;
 import net.sf.ssi.mapper.UserMapper;
-import net.sf.ssi.service.UserService;
+import net.sf.ssi.service.IUserService;
 
 import org.springframework.dao.DataAccessException;
 
@@ -15,7 +15,7 @@ import org.springframework.dao.DataAccessException;
  * @version 0.1, 2011-5-25 上午10:25:35
  *
  */
-public class UserServiceImpl<T extends User> implements UserService<T> {
+public class UserService<T extends User> implements IUserService<T> {
 	
 	private UserMapper mapper;
 
