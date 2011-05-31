@@ -13,6 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 @Transactional
-public interface UserService<T> {
+public interface IUserService<T> {
 	 public T getInfo(String key) throws DataAccessException;
 }
