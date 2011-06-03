@@ -1,0 +1,129 @@
+一：配置web.xml
+	1)问题：spring项目中有多个配置文件mvc.xml   dao.xml
+	2）解决：在web.xml中
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/xxx/*.xml</param-value>   // xxx表示xml文件路径    *.xml表示后缀名为xml的任意文件
+		</init-param>    
+	3）可以使用  逗号分隔
+	
+二：controller
+	1:spring mvc 中将  controller  认为是 MVC中的C(控制层)
+	2：规范命名 类名  xxxController 
+	3：如果不基于注解：   该类需要继承  CommandController   或者 其他很多 参见  spring帮助
+		如果基于注解：在类名前  加上 @controller   
+	4:补充：将类名前加上该注解，当spring启动  或者web服务启动  spring会自动扫描所有包（当然，这个可以设置）
+		作用:  就是告诉服务器  这个类是MVC中的C  这个类可以接收用户请求    处理用户请求
+		
+三：问题：如何接收用户请求
+	1：假设用户请求URL 是： http://localhost:8080/项目名/xxx.do   do不do都一样  不管这个do  你用什么都可以
+	2：这个时候，spring开始在所有的 C  中，找对应的处理请求的方法
+	3：在任意的可以C的类中，在你想要处理此请求的方法定义的前面 
+		@RequestMapping("/xxx")  //这个时候的xxx  就是用户请求的xxx 不管do
+		public String 方法名(){
+			return "aaa"; 		//返回一个字符串，非常有用   要注意   用来决定要显示的MVC的 V(视图层)是哪个 
+		}
+		
+四：上面  配置好了  MVC的   C(控制层) 在方法中返回字符串  用来决定MVC的V(视图层)
+	问题：如何让spring 去扫描类  建立关联
+		1：在配置文件中  （spring）的 假设是 mvc.xml中
+		2：加入 <context:component-scan base-package="包路径"/>
+		
+五：问题 如何返回到视图层 V
+	1： 解决：此时，需要在配置文件中，加入视图解析器    有很多种 ，太多了 
+	2：这里用基于jsp/jstl  视图
+	3：在web.xml 中加入bean 配置
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/views"/>	//前缀
+			<property name="suffix" value=".jsp"/> 				//后缀
+		</bean>
+
+小结：通过上述5步  ，基本完成 C, V 的配置
+	1：spring 中的C  一般起类名     XXXController   在这个类里面 需要加入@controller  标志这个类可以作为请求处理类   也就是 控制类
+	2：这个控制类里面可以有很多方法，哪个方法用来处理用户请求，就在那个方法前面 加  @RequestMapping（“/xxxxx请求路径”）
+	3: 当请求处理完毕后  返回值  决定了  该处理完毕后  用户将跳转到那个页面   这个很重要  
+	4：例如
+		@RequestMapping("/xxx")		//这个时候的xxx  就是用户请求的xxx 不管do
+		public String 方法名(){
+			return "aaa";			//返回一个字符串，非常有用 ，要注意，用来决定要显示的MVC的 V(视图层)是哪个 
+		}
+		返回 aaa   根据配置文件中的 视图处理器配置    加入前缀  后缀    , 页面将跳转到 /WEB-INF/views/aaa.jsp
+
+1 问题：有多个 @RequestMapping 
+	@Controller
+	@RequestMapping("/aaa")			//类级别  可以不需要  如果要了  下面所有的请求路径前 都需要加入  /aaa
+	public class ccccontroller{
+		@RequestMapping("/bbb")		//方法级别 必须有   决定这个方法处理哪个请求     如果有类级别 /aaa/bbb
+		public String xxx(){                                                                                                                             如果没有 /bbb  
+			retrun
+		}
+	}
+2：问题：接收用户请求参数 值
+	1）请求1： /test/start.do?name=zhangsan
+		请求2： /test/start/zhangsan.do
+		在请求2中 将参数作为请求URL 传递           感觉用的不习惯 
+		采用 URL模板
+	2）
+		@RequestMapping("/start/{name}")    这个name  随便  啥都可以
+		public String start(@PathVariable("name") string name){       反正和上面的对应
+		return      方法体里面就可以直接获得参数
+		}
+	3）包含多个  @RequestMapping ("/start/{name}/{age}")
+	
+3  问题：不同请求方法  用不同处理方法   get  post
+   	@RequestMapping (value="/start" ,method=RequestMethod.GET)    处理post   就换成  POST
+
+	请求处理方法，参数及返回值总结
+	@RequestMapping("/xxxx")
+	public String  aaa(){
+	}
+	在处理用户请求的方法里 ，
+	1：参数
+		a）aaa()无参
+		b）aaa(@PathVariable(" ") 类型  变量)  用来接收将参数作为URL传递的类型处理
+		c）aaa(Httpservletrequest  啊  respons啊   session啊  等等) 呵呵  servlet
+			注意 这里使用session  必须是session已经存在
+			如何让session存在  request.getSession()
+							 session.setattribute()
+			      			  进入jsp页面  创建session对象
+		d）aaa(@RequestParam  类型名  变量名) 
+			就是省略了  request.getParamter     变量名 和 URL里面的参数名相同
+		e）aaa(@cookValue  类名  变名) (@RequestHeader("user-Agent")  类名  变名 )
+			读  cookie                                      读HTTP头
+		f）aaa(PrintWriter  out)  代替了 在方法体里面搞一个 PrintWriter  out  = new PrintWriter();
+			参数里面 就生产了这个对象    方法体里面可以直接使用   out.println()
+		g) aaa(Map model)
+			这个很重要  在方法体中直接可以使用 model   呵呵  看名字就知道是什么了吧  model----》模型层  装数据啊  实体类啊 
+			在方法里面可以用 model.put("key" ,value)   就是map 类的对象   键值对
+		h）aaa(User user)   这个User 是实体类
+			作用：用户发出带参数请求   xxx .do?name=a&pw=b
+			在User 这个实体类中 有对应字段   自动将值传入实体类    感觉不实际 不好用  呵呵 感觉而已
+	2：返回值
+		a） void  
+			1）一般用在out 直接输出
+			2）但他还是要返回一个页面的  不然用户看什么
+				返回规则：生成隐含视图    
+				按照请求路径  ${appname}/test/xxx.do
+				取出 test/xxx    根据配置文件  将前缀 后缀 加上   
+				这个看实际开发情况吧  说不清楚了
+		b）String
+			1）：最常用  简单
+			2）根据返回字符串  将配置文件里面的前缀  后缀 加上
+		c）返回任意类型对象
+			1）模型层   自动填充到  model中   就是Map      例如 model("user",user)
+			2) 视图层    与void 一样 
+		d）返回 list
+			public List<User> queryUser(){
+			}
+			1)模型层  自动加入model（"userList",user）  页面使用
+			2）页面读取  request.getAttribute("userList")
+				${userList}
+               
+重定向      return "redirect:/xxx"
+
+关于跳转
+
+	请求有2种
+		return "字符串" 就到配置文件中去找 前缀+字符串+后缀 组合成路径 去找文件
+		return "redirect:/xxx" 直接在Controller类中 找@RequestMapping实际处理的请求字符串
+		
