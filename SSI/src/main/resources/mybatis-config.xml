@@ -4,6 +4,6 @@
 	<!-- 别名 -->
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="String" />
-		<typeAlias type="net.sf.ssi.domain.User" alias="user" />
+		<typeAlias type="net.sf.ssi.domain.User" alias="User" />
 	</typeAliases>
 </configuration>
