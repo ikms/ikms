@@ -34,10 +34,24 @@ public class UserController {
 	@RequestMapping(value="/getInfo2/{userId}")
 	public String getInfo2(@PathVariable String userId, Model model){
 		model.addAttribute("user",userId);
-		User user = userService.getInfo(userId);
+		User user = userService.getInfoByKey(userId);
+		System.out.println(user.getUserName());
 		return "userInfo";
+	}
+	@RequestMapping(value="/getInfo3/{userId}")
+	public String getInfo3(@PathVariable String userId, Model model){
+		User user = userService.getInfoByKey(userId);
+		model.addAttribute("user",user);
+		return "userInfofromdb";
 	}
 	
 	@Autowired
-	IUserService<User> userService;
+	public IUserService<User> userService;
+
+	public IUserService<User> getUserService() {
+		return userService;
+	}
+	public void setUserService(IUserService<User> userService) {
+		this.userService = userService;
+	}
 }
