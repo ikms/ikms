@@ -3,14 +3,16 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
 <mapper namespace="net.sf.ssi.mapper.UserMapper">
-	<resultMap type="net.sf.ssi.domain.User" id="userResultMap">
-		<result property="userId" column="userId" />
-		<result property="userName" column="userName" />
+	<resultMap type="UserPOJO" id="userResultMap">
+		<result property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
 		<result property="password" column="password" />
 	</resultMap>
 
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
-	<select id="getInfoByKey" parameterType="String" resultType="User">
-            select * from User where userId=#{key}
+	<select id="getInfoByKey" parameterType="String" resultType="UserPOJO">
+		<![CDATA[
+            select * from T_IKMS_USER where user_id=#{key}
+        ]]>
 	</select>
 </mapper>

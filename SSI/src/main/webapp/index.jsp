@@ -12,6 +12,7 @@ JQuery 1.5.x + Spring 3.0.x MVC REST + Mybatis 3.0.x + JPA 2.0 + Hibernate 3.6.x
 <hr />
 HelloWorld : <a href="usercenter/getInfo.html?userId=1">Say Hello</a><br />
 HelloWorld : <a href="usercenter/getInfo2/2.html">Say Hello</a><br />
-数据库获取用户信息 : <a href="usercenter/getInfo3/1.html">Say Hello</a>
+数据库获取用户信息 : <a href="usercenter/getInfo3/1.html">Say Hello</a><br />
+注册用户：<a href="usercenter/regUser.html">Say Hello</a>
 </body>
 </html> 
