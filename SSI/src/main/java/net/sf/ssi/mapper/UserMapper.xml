@@ -7,6 +7,9 @@
 		<result property="userId" column="user_id" />
 		<result property="userName" column="user_name" />
 		<result property="password" column="password" />
+		<result property="nickName" column="nick_name" />
+		<result property="userSource" column="user_source" />
+		<result property="createDate" column="create_date" />
 	</resultMap>
 
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->

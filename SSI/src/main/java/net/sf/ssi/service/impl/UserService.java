@@ -61,12 +61,4 @@ public class UserService<T extends User> implements IUserService<T> {
 		}
 		return entityList;
 	}
-
-	public UserMapper<T> getMapper() {
-		return mapper;
-	}
-
-	public void setMapper(UserMapper<T> mapper) {
-		this.mapper = mapper;
-	}
 }
