@@ -1,5 +1,8 @@
 package net.sf.ssi.controller;
 
+import java.util.List;
+
+import net.sf.ikms.util.CommonUtils;
 import net.sf.ssi.domain.User;
 import net.sf.ssi.service.IUserService;
 
@@ -8,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,9 +55,16 @@ public class UserController {
 	}
 	@RequestMapping(value="/signup",method = RequestMethod.POST)
 	public String signup(@ModelAttribute("user") User user, Model model){
-		//user.setUserId();
+		user.setUserId(CommonUtils.getGUID());
+		userService.save(user);
 		//model.addAttribute("title","用户注册");
-		return "regUser";
+		return "redirect:query.html";
+	}
+	@RequestMapping(value="/query")
+	public String query(Model model){
+		List<User> userList = userService.findAll();
+		model.addAttribute("userList",userList);
+		return "query";
 	}
 	
 	@Autowired

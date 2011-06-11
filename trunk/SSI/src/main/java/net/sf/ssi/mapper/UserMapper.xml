@@ -12,7 +12,18 @@
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
 	<select id="getInfoByKey" parameterType="String" resultType="UserPOJO">
 		<![CDATA[
-            select * from T_IKMS_USER where user_id=#{key}
+            SELECT * FROM T_IKMS_USER WHERE USER_ID=#{key}
         ]]>
 	</select>
+	<select id="findAll" resultMap="userResultMap">
+		<![CDATA[
+            SELECT * FROM T_IKMS_USER ORDER BY USER_ID
+        ]]>
+	</select>
+	<insert id="saveEntity" parameterType="UserPOJO">
+		<![CDATA[
+            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,PASSWORD)
+            	VALUES(#{userId},#{userName},#{password})
+        ]]>
+	</insert>
 </mapper>
