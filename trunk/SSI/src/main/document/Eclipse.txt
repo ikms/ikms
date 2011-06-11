@@ -1,0 +1,7 @@
+加入到eclipse.ini最后，将最后的-Xms40m和-Xmx512m去掉。换成如下内容，便于加快Eclipse启动速度。
+-Xms512m
+-Xmx512m
+-XX:PermSize=96m
+-XX:MaxPermSize=96m
+-Xmn168m
+-XX:+DisableExplicitGC
