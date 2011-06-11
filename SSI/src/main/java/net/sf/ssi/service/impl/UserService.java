@@ -3,6 +3,8 @@
  */
 package net.sf.ssi.service.impl;
 
+import java.util.List;
+
 import net.sf.ssi.domain.User;
 import net.sf.ssi.mapper.UserMapper;
 import net.sf.ssi.service.IUserService;
@@ -21,32 +23,12 @@ import org.springframework.stereotype.Service;
 public class UserService<T extends User> implements IUserService<T> {
 	
 	@Autowired
-	private UserMapper mapper;
+	private UserMapper<T> mapper;
 
-	/**
-	 * @return the mapper
-	 */
-	public UserMapper getMapper() {
-		return mapper;
-	}
-
-	/**
-	 * @param mapper the mapper to set
-	 */
-	public void setMapper(UserMapper mapper) {
-		this.mapper = mapper;
-	}
-
-	@SuppressWarnings("unchecked")
 	@Override
 	public T getInfoByKey(String key) throws DataAccessException {
 		 T entity = null;
 	        try {
-//	        	User user = new User();
-//	        	user.setPassword("1");
-//	        	user.setUserId("2");
-//	        	user.setUserName("text");
-//	        	entity = (T) user;
 	            entity = (T) mapper.getInfoByKey(key);
 	        } catch (DataAccessException e) {
 	            throw e;
@@ -54,4 +36,37 @@ public class UserService<T extends User> implements IUserService<T> {
 	        return entity;
 	}
 
+	/* (non-Javadoc)
+	 * @see net.sf.ssi.service.IUserService#save(net.sf.ssi.domain.User)
+	 */
+	@Override
+	public void save(T entity) throws DataAccessException {
+		try {
+			mapper.saveEntity(entity);
+		} catch (DataAccessException e) {
+			throw e;
+		}
+		
+	}
+	/* (non-Javadoc)
+	 * @see net.sf.ssi.service.IUserService#findAll()
+	 */
+	@Override
+	public List<T> findAll() throws DataAccessException {
+		List<T> entityList =null;
+		try {
+			entityList = mapper.findAll();
+		} catch (DataAccessException e) {
+			throw e;
+		}
+		return entityList;
+	}
+
+	public UserMapper<T> getMapper() {
+		return mapper;
+	}
+
+	public void setMapper(UserMapper<T> mapper) {
+		this.mapper = mapper;
+	}
 }
