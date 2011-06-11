@@ -57,7 +57,7 @@ public class UserController {
 	public String signup(@ModelAttribute("user") User user, Model model){
 		user.setUserId(CommonUtils.getGUID());
 		userService.save(user);
-		//model.addAttribute("title","用户注册");
+		model.addAttribute("title","用户注册");
 		return "redirect:query.html";
 	}
 	@RequestMapping(value="/query")
