@@ -3,7 +3,6 @@
  */
 package net.sf.ssi.mapper;
 
-import java.util.List;
 
 
 /**
@@ -13,18 +12,6 @@ import java.util.List;
  * @param <T>
  * 
  */
-public interface UserMapper<T> extends SqlMapper {
-
-	/**
-	 * 根据主键获取实体信息
-	 */
-	public T getInfoByKey(String key);
-	/**
-	 * 持久化实体 
-	 */
-	public void saveEntity(T entity);
-	/**
-	 * 获取全部实体
-	 */
-	public List<T> findAll();
+public interface UserMapper<T> extends SqlMapper<T> {
+	
 }

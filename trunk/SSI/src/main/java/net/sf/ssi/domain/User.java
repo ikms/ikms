@@ -4,6 +4,7 @@
 package net.sf.ssi.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 
@@ -15,58 +16,59 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 4486069573596403045L;
 
-	private String userId;
-	private String userName;
-	private String password;
+	private String userId;		// 用户编码
+	private String userName;	// 用户名
+	private String password;	// 密码
+	private String nickName;	// 昵称
+	private String userSource;	// 用户来源
+	private Date createDate;	// 创建时间
 
-	/**
-	 * @return the userId
-	 */
 	public String getUserId() {
 		return userId;
 	}
 
-	/**
-	 * @param userId
-	 *            the userId to set
-	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	/**
-	 * @return the userName
-	 */
 	public String getUserName() {
 		return userName;
 	}
 
-	/**
-	 * @param userName
-	 *            the userName to set
-	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	/**
-	 * @return the password
-	 */
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @param password
-	 *            the password to set
-	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "userId=" + this.userId + ", userName=" + this.userName + ", password=" + this.password;
-//	}
+	public void setUserSource(String userSource) {
+		this.userSource = userSource;
+	}
+
+	public String getUserSource() {
+		return userSource;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
 
 }
