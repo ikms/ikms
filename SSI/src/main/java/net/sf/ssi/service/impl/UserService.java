@@ -29,7 +29,7 @@ public class UserService<T extends User> implements IUserService<T> {
 	public T getInfoByKey(String key) throws DataAccessException {
 		 T entity = null;
 	        try {
-	            entity = (T) mapper.getInfoByKey(key);
+	            entity = mapper.getInfoByKey(key);
 	        } catch (DataAccessException e) {
 	            throw e;
 	        }
