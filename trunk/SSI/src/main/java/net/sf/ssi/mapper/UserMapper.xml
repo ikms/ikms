@@ -5,8 +5,9 @@
 <mapper namespace="net.sf.ssi.mapper.UserMapper">
 	<resultMap type="UserPOJO" id="userResultMap">
 		<result property="userId" column="user_id" />
+		<result property="userAccount" column="user_account" />
 		<result property="userName" column="user_name" />
-		<result property="password" column="password" />
+		<result property="userPassword" column="user_password" />
 		<result property="nickName" column="nick_name" />
 		<result property="userSource" column="user_source" />
 		<result property="createDate" column="create_date" />
