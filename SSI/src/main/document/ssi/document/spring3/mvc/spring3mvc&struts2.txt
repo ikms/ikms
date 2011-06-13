@@ -1,0 +1,60 @@
+spring3mvc与struts2比较
+http://blog.csdn.net/xrt95050/archive/2011/03/05/6225769.aspx
+
+转载  spring3mvc与struts2比较 收藏
+
+项目刚刚换了web层框架，放弃了struts2改用spring3mvc
+当初还框架的时候目的比较单纯---springmvc支持rest，小生对restful url由衷的喜欢
+不用不知道 一用就发现开发效率确实比struts2高
+
+我们用struts2时采用的传统的配置文件的方式，并没有使用传说中的0配置
+spring3 mvc可以认为已经100%零配置了（除了配置springmvc-servlet.xml外）
+
+比较了一下strus2与spring3 mvc的差别
+
+============================================
+struts2框架是类级别的拦截，每次来了请求就创建一个Action，然后调用setter getter方法把request中的数据注入
+struts2实际上是通过setter getter方法与request打交道的
+struts2中，一个Action对象对应一个request上下文
+
+spring3 mvc不同，spring3mvc是方法级别的拦截，拦截到方法后根据参数上的注解，把request数据注入进去
+在spring3mvc中，一个方法对应一个request上下文
+
+好了 我们来整理一下
+struts2是类级别的拦截， 一个类对应一个request上下文，
+springmvc是方法级别的拦截，一个方法对应一个request上下文，而方法同时又跟一个url对应
+所以说从架构本身上 spring3 mvc就容易实现restful url
+而struts2的架构实现起来要费劲
+因为struts2 action的一个方法可以对应一个url
+而其类属性却被所有方法共享，这也就无法用注解或其他方式标识其所属方法了
+
+===================================
+spring3mvc的方法之间基本上独立的，独享request response数据
+请求数据通过参数获取，处理结果通过ModelMap交回给框架
+方法之间不共享变量
+
+而struts2搞的就比较乱，虽然方法之间也是独立的，但其所有Action变量是共享的
+这不会影响程序运行，却给我们编码 读程序时带来麻烦
+
+====================================
+spring3 mvc的验证也是一个亮点，支持JSR303
+处理ajax的请求更是方便 只需一个注解@ResponseBody ，然后直接返回响应文本即可
+
+附上一段代码
+Java代码 复制代码
+
+    @RequestMapping(value="/whitelists")   
+    public String index(ModelMap map){   
+        Account account = accountManager.getByDigitId(SecurityContextHolder.get().getDigitId()) ;   
+        List<Group> groupList = groupManager.findAllGroup(account.getId()) ;   
+        map.put("account", account);   
+        map.put("groupList", groupList);   
+        return "/group/group-index" ;   
+    }   
+           //@ResponseBody ajax响应     
+    @RequestMapping(value="/whitelist/{whiteListId}/del")   
+    @ResponseBody     
+    public String delete(@PathVariable Integer whiteListId){   
+        whiteListManager.deleteWhiteList(whiteListId) ;   
+        return "success" ;   
+    }  

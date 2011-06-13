@@ -4,13 +4,13 @@
 <!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
 <mapper namespace="net.sf.ssi.mapper.UserMapper">
 	<resultMap type="UserPOJO" id="userResultMap">
-		<result property="userId" column="user_id" />
+		<result property="userId" column="user_id"/>
 		<result property="userAccount" column="user_account" />
 		<result property="userName" column="user_name" />
 		<result property="userPassword" column="user_password" />
 		<result property="nickName" column="nick_name" />
 		<result property="userSource" column="user_source" />
-		<result property="createDate" column="create_date" />
+		<result property="createDate" column="create_date"/>
 	</resultMap>
 
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
@@ -19,15 +19,32 @@
             SELECT * FROM T_IKMS_USER WHERE USER_ID=#{key}
         ]]>
 	</select>
-	<select id="findAll" resultMap="userResultMap">
+	<select id="find" parameterType="UserPOJO" resultMap="userResultMap">
 		<![CDATA[
-            SELECT * FROM T_IKMS_USER ORDER BY USER_ID
+            SELECT * FROM T_IKMS_USER
         ]]>
-	</select>
-	<insert id="saveEntity" parameterType="UserPOJO">
+		<dynamic prepend="where">
+			<isNotEmpty property="userId" prepend="and">
+				user_id = #userId#
+	        </isNotEmpty>
+			<isNotEmpty property="userAccount" prepend="and">
+				user_account = #userAccount#
+	        </isNotEmpty>
+			<isNotEmpty property="userSource" prepend="and">
+				user_source = #userSource#
+	        </isNotEmpty>
+			<isNotEmpty property="createDate" prepend="and">
+				create_date = #createDate#
+	        </isNotEmpty>
+		</dynamic>
 		<![CDATA[
-            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,PASSWORD)
-            	VALUES(#{userId},#{userName},#{password})
+			 ORDER BY USER_ID
+		]]>
+	</select>
+	<insert id="add" parameterType="UserPOJO">
+		<![CDATA[
+            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,USER_PASSWORD)
+            	VALUES(#{userId},#{userName},#{userPassword})
         ]]>
 	</insert>
 </mapper>

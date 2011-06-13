@@ -1,0 +1,86 @@
+OSCache和ehcache的对比分析
+
+OScache和ehcache都是轻量级的缓存工具，都非常好用，但是在笔者使用经验上来看，不建议大家使用oscache了，因为oscache似乎停止开发了，另外功能也没有ehcache强大，ehcache已经被大公司收购了，说明其价值不错。
+
+1. 页面缓存
+oscache使用标签cache来做，这个是oscache最方便的一点，相比ehcache需要使用fragment filter来实现
+
+2. servlet缓存
+oscache有deadlock的bug，非常不建议再使用oscache，而要使用ehcache，ehcache使用SimplePageCachingFilter
+
+3. 代码使用
+ehcache和spring结合很好，很容易使用，CacheManager设计也不错，而oscache这方面不太行
+
+综合上述，ehcache是非常强大，并且在持续维护的项目，可以值得信赖。
+
+
+***********************************************************************************************************************
+一.ehcache主要是对数据库访问的缓存,相同的查询语句只需查询一次数据库,
+
+  从而提高了查询的速度,使用spring的AOP可以很容易实现这一功能.
+
+  http://ehcache.sourceforge.net/
+
+  ehcache.xml
+
+     <cache name="sampleCache1"
+        maxElementsInMemory="10000"
+        eternal="false"
+        timeToIdleSeconds="300"
+        timeToLiveSeconds="600"
+        overflowToDisk="true"
+        />
+
+org.springframework.cache.ehcache.EhCacheManagerFactoryBean
+
+org.springframework.cache.ehcache.EhCacheFactoryBean
+
+org.springframework.aop.support.RegexpMethodPointcutAdvisor
+
+二.  oscache 主要是对页面的缓存,可以整页或者指定网页某一部分缓存,同时
+
+  指定他的过期时间,这样在此时间段里面访问的数据都是一样的
+
+1.log4j-1.2.8.jar,oscache-2.3.2.jar,commons-logging.jar,jgroups-all.jar
+
+2.拷贝cach\etc\下的oscache.tld,oscache.properties 到WEB-INF\classes
+
+3.web.xml
+
+ <taglib><taglib-uri>oscache</taglib-uri><taglib-location>/WEB-INF/classes/ oscache.tld</taglib-location></taglib>
+   <filter>   
+   <filter-name>CacheFilter</filter-name>
+   <filter-class>com.opensymphony.oscache.web.filter.CacheFilter</filter-class>
+
+     <init-param>       
+           <param-name>time</param-name> 
+           <param-value>60</param-value>   
+     </init-param>    
+     <init-param>                           
+          <param-name>scope</param-name>
+          <param-value>session</param-value> 
+      </init-param>
+
+   </filter>
+<filter-mapping>
+       <filter-name>CacheFilter</filter-name> 
+       <url-pattern>/*.jsp</url-pattern>
+</filter-mapping>    
+
+
+http://www.opensymphony.com/oscache/download.html下载Oscache的最新版本
+
+ 可以使用内存、硬盘空间、同时使用内存和硬盘或者提供自己的其他资源（需要自己提供适配器）作为缓存区。
+
+    使用内存作为缓存区将可以提供更好的性能
+    使用硬盘作为缓存区可以在服务器重起后迅速恢复缓存内容
+    同时使用内存和硬盘作为缓存区则可以减少对内存的占用
+
+==========================================================================
+OSCache的配置比较活的，你可以根据你的情况进行相应的配置。它主要是针对页面级的对象。虽然它专门为jsp提供了强大的标签支持，并不意味着不能对ftl,php进行缓存的，我们可以用jsp中的标签来嵌套我们的返回不同的数据页面。比如上面的/view.do可以返回的是一个ftl页面，照样可以缓存。
+       要想对缓存有更深入的了解，可以查看源码，可能会帮助你更好的理解它的工作机制和原理。
+       简单的说，缓存就是Map<key,value>，创建缓存就是添加一个map,使用就是通过key取value.
+       
+       
+       
+       

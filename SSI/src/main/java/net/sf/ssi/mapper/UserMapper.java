@@ -2,9 +2,6 @@
  * 
  */
 package net.sf.ssi.mapper;
-
-
-
 /**
  * 
  * @author zhangyj

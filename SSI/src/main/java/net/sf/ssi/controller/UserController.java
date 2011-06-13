@@ -2,13 +2,14 @@ package net.sf.ssi.controller;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import net.sf.ikms.util.CommonUtils;
 import net.sf.ssi.domain.User;
 import net.sf.ssi.service.IUserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -67,13 +68,13 @@ public class UserController {
 		return "query";
 	}
 	
-	@Autowired
+	@Inject
 	public IUserService<User> userService;
 
-	public IUserService<User> getUserService() {
-		return userService;
-	}
-	public void setUserService(IUserService<User> userService) {
-		this.userService = userService;
-	}
+//	public IUserService<User> getUserService() {
+//		return userService;
+//	}
+//	public void setUserService(IUserService<User> userService) {
+//		this.userService = userService;
+//	}
 }
