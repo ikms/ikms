@@ -1,0 +1,23 @@
+1、Spring表达式语言（简称SpEL）：在Bean定义中使用的表达式解析器，可以在属性值中通过#{...}语法，引用嵌套的Bean结构（如其他Bean的属性），就像引用环境数据一样
+
+2、对基于注解的组件的扩展支持：对配置类和注解工厂方法（JavaConfig）的增强，允许用@Value，通过动态表达式#{...}，或静态占位符${...}，注入配置值。
+
+3、强大的注解模型：允许通过元注解创建“快捷”注解，比如用自定义的注解类别，指代默认的作用域和事务特性。
+
+4、标准化的依赖注入注解：支持Java的依赖注入JSR-330规范，可以用@Inject替代@Autowired。
+
+5、基于注解的声明式模型验证：支持自动发现和配置符合JSR-303规范的Bean验证提供程序（如HiernateValidator4.0）
+
+6、增强的绑定和注解驱动式格式化：格式化可以通过注解驱动，类似JSR-303的约束声明风格。
+
+7、全面的REST支持：SpringMVC内置REST的支持，如REST风格的请求映射，通过@PathVariable参数抽取URI变量，基于内容协商（content negotiation）驱动的视图展示。通过RestTemplate模板类，提供客户端REST支持
+
+8、对象XML映射（OXM)：即移入Spring框架核心的Spring Web Services
+
+9、下一代调度支持：新的任务调度器（TaskScheduler）和触发器（Trigger）机制提供一等的cron支持。
+
+在Java版本上，Spring3.0支持Java5和Servlet2.4及更新版本，兼容JavaEE6运行时环境（如最新发布的GlassFish v3）和JPA2.0等，但不再支持旧版Java。
+
+
+spring3官方新特性地址
+http://static.springsource.org/spring/docs/current/spring-framework-reference/html/new-in-3.html
