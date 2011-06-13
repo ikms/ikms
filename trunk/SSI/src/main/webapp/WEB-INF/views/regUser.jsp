@@ -52,7 +52,7 @@ function checkpage(){
 							<input type="text" class="title" name="userName" id="id_userName" value=""/><br/>
 							
 							<label for="id_password">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-							<input type="password" class="title" name="password" id="id_password" value=""/><br/>
+							<input type="password" class="title" name="userPassword" id="id_userPassword" value=""/><br/>
 						</p>
 						<p>
 							<button type="submit" class="button positive" onclick="return checkpage();">

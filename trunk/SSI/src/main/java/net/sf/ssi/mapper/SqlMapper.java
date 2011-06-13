@@ -13,24 +13,25 @@ import java.util.List;
  *
  */
 public interface SqlMapper<T> {
+	//CRUD：Create，Read，Update，Delete
+	/**
+	 * 添加实体 
+	 */
+	public void add(T entity);
+	/**
+	 * 编辑实体
+	 */
+	public void edit(T entity);
+	/**
+	 * 移除实体
+	 */
+	public void remove(T entity);
 	/**
 	 * 根据主键获取实体信息
 	 */
 	public T getInfoByKey(String key);
 	/**
-	 * 持久化实体 
-	 */
-	public void saveEntity(T entity);
-	/**
 	 * 获取全部实体
 	 */
-	public List<T> findAll();
-	/**
-	 * 删除实体
-	 */
-	public void removeEntity(String key);
-	/**
-	 * 更新实体
-	 */
-	public void updateEntity(T entity);
+	public List<T> find(T entity);
 }

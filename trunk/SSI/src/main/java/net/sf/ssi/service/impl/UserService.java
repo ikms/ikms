@@ -5,11 +5,12 @@ package net.sf.ssi.service.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import net.sf.ssi.domain.User;
 import net.sf.ssi.mapper.UserMapper;
 import net.sf.ssi.service.IUserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService<T extends User> implements IUserService<T> {
 	
-	@Autowired
+	@Inject
+	//@Autowired 等同@Inject , 详见Spring3.0.x新特性之一。
 	private UserMapper<T> mapper;
 
 	@Override
@@ -42,7 +44,7 @@ public class UserService<T extends User> implements IUserService<T> {
 	@Override
 	public void save(T entity) throws DataAccessException {
 		try {
-			mapper.saveEntity(entity);
+			mapper.add(entity);
 		} catch (DataAccessException e) {
 			throw e;
 		}
@@ -55,7 +57,7 @@ public class UserService<T extends User> implements IUserService<T> {
 	public List<T> findAll() throws DataAccessException {
 		List<T> entityList =null;
 		try {
-			entityList = mapper.findAll();
+			entityList = mapper.find(null);
 		} catch (DataAccessException e) {
 			throw e;
 		}

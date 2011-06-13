@@ -8,7 +8,7 @@
 <body>
 userId:${user.userId}<br/>
 userName:${user.userName}<br/>
-password:${user.password}<br/>
+password:${user.userPassword}<br/>
 以上信息来源于数据库
 </body>
 </html>
