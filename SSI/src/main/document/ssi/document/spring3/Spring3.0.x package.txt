@@ -1,0 +1,39 @@
+org.springframework.aop- 3.0.0.RELEASE--------------------Spring的面向切面编程,提供AOP(面向切面编程)实现
+
+org.springframework.asm- 3.0.0.RELEASE--------------------Spring独立的asm程序,相遇Spring2.5.6的时候需要asmJar 包.3.0开始提供他自己独立的asmJar
+
+org.springframework.aspects- 3.0.0.RELEASE----------------Spring提供对AspectJ框架的整合\
+
+org.springframework.beans- 3.0.0.RELEASE------------------SpringIoC(依赖注入)的基础实现
+
+org.springframework.context.support- 3.0.0.RELEASE--------Spring-context的扩展支持,用于MVC方面
+
+org.springframework.context- 3.0.0.RELEASE----------------Spring提供在基础IoC功能上的扩展服务，此外还提供许多企业级服务的支持，如邮件服务、任务调度、JNDI定位、EJB集成、远程访问、缓存以及各种视图层框架的封装等
+
+org.springframework.core- 3.0.0.RELEASE-------------------Spring3.0的核心工具包
+
+org.springframework.expression- 3.0.0.RELEASE-------------Spring表达式语言
+
+org.springframework.instrument.tomcat- 3.0.0.RELEASE------Spring3.0对Tomcat的连接池的集成
+
+org.springframework.instrument- 3.0.0.RELEASE-------------Spring3.0对服务器的代理接口
+
+org.springframework.jdbc- 3.0.0.RELEASE-------------------对JDBC的简单封装
+
+org.springframework.jms- 3.0.0.RELEASE--------------------为简化JMS API的使用而作的简单封装
+
+org.springframework.orm- 3.0.0.RELEASE--------------------整合第三方的ORM框架，如hibernate,ibatis,jdo，以及 spring的JPA实现
+
+org.springframework.oxm-3.0.0.RELEASE--------------------Spring 对Object/XMl的映射支持,可以让Java与XML之间来回切换
+
+org.springframework.test- 3.0.0.RELEASE--------------------对Junit等测试框架的简单封装
+
+org.springframework.transaction- 3.0.0.RELEASE-------------为JDBC、Hibernate、JDO、JPA等提供的一致的声明式和编程式事务管理
+
+org.springframework.web.portlet- 3.0.0.RELEASE-------------SpringMVC的增强
+
+org.springframework.web.servlet- 3.0.0.RELEASE-------------对JEE6.0 Servlet3.0的支持
+
+org.springframework.web.struts- 3.0.0.RELEASE--------------整合Struts的时候的支持
+
+org.springframework.web- 3.0.0.RELEASE--------------------SpringWeb下的工具包
