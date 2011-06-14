@@ -63,9 +63,9 @@ public class UserController {
 	}
 	@RequestMapping(value="/query")
 	public String query(Model model){
-		User user = new User();
-		user.setUserId("1");
-		List<User> userList = userService.find(user);
+//		User user = new User();
+//		user.setUserId("1");
+		List<User> userList = userService.find(null);
 		model.addAttribute("userList",userList);
 		return "query";
 	}
