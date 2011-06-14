@@ -13,6 +13,32 @@
 		<result property="createDate" column="create_date"/>
 	</resultMap>
 
+	<insert id="add" parameterType="UserPOJO">
+		<![CDATA[
+            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,USER_PASSWORD)
+            	VALUES(#{userId},#{userName},#{userPassword})
+        ]]>
+	</insert>
+	
+	<update id="edit" parameterType="UserPOJO">
+		<![CDATA[
+			UPDATE T_IKMS_USER
+		]]>
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="userAccount !=null and userAccount !=''">
+				USER_ACCOUNT = #{userAccount},
+			</if>
+		</trim>
+		<![CDATA[
+			WHERE USER_ID = #{userId}
+		]]>
+	</update>
+	
+	<delete id="remove" parameterType="UserPOJO">
+		<![CDATA[
+			DELETE FROM T_IKMS_USER WHERE USER_ID = #{userId}
+		]]>
+	</delete>
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
 	<select id="getInfoByKey" parameterType="String" resultType="UserPOJO">
 		<![CDATA[
@@ -44,10 +70,4 @@
 			 ORDER BY USER_ID
 		]]>
 	</select>
-	<insert id="add" parameterType="UserPOJO">
-		<![CDATA[
-            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,USER_PASSWORD)
-            	VALUES(#{userId},#{userName},#{userPassword})
-        ]]>
-	</insert>
 </mapper>
