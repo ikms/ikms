@@ -21,22 +21,25 @@
 	</select>
 	<select id="find" parameterType="UserPOJO" resultMap="userResultMap">
 		<![CDATA[
-            SELECT * FROM T_IKMS_USER
+            SELECT * FROM T_IKMS_USER 
         ]]>
-		<dynamic prepend="where">
-			<isNotEmpty property="userId" prepend="and">
-				user_id = #userId#
-	        </isNotEmpty>
-			<isNotEmpty property="userAccount" prepend="and">
-				user_account = #userAccount#
-	        </isNotEmpty>
-			<isNotEmpty property="userSource" prepend="and">
-				user_source = #userSource#
-	        </isNotEmpty>
-			<isNotEmpty property="createDate" prepend="and">
-				create_date = #createDate#
-	        </isNotEmpty>
-		</dynamic>
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="userId != null and userId != '' ">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="userAccount != null and userAccount != '' ">
+				AND USER_ACCOUNT = #{userAccount}
+			</if>
+			<if test="userPassword != null and userPassword != ''">
+				AND USER_PASSWORD = #{userPassword}
+			</if>
+			<if test="userSource != null and userSource != '' ">
+				AND USER_SOURCE = #{userSource}
+			</if>
+			<if test="createDate != null and createDate != '' ">
+				AND CREATE_DATE = #{createDate}
+			</if>
+		</trim>
 		<![CDATA[
 			 ORDER BY USER_ID
 		]]>
