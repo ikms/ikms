@@ -31,12 +31,11 @@ public interface IUserService<T> {
 	 * @throws DataAccessException
 	 */
 	public void save(T entity) throws DataAccessException;
-
 	/**
-	 * 获取全部实体
-	 * 
+	 * 获取实体
+	 * @param entity
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public List<T> findAll() throws DataAccessException;
+	public List<T> find(T entity) throws DataAccessException;
 }

@@ -15,6 +15,7 @@
 <script type="text/javascript">
 function checkpage(){
 	var userName = $("#id_userName").val();
+	$("#id_submit").disabled = true;
 	if(userName==""){
 		alert("用户名为空");
 		return false;
@@ -55,7 +56,7 @@ function checkpage(){
 							<input type="password" class="title" name="userPassword" id="id_userPassword" value=""/><br/>
 						</p>
 						<p>
-							<button type="submit" class="button positive" onclick="return checkpage();">
+							<button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
 								<img src="${pageContext.request.contextPath}/resources/css/buttons/icons/tick.png" alt=""/> 注 册
 							</button>
 						</p>
