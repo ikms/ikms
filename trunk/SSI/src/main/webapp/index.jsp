@@ -13,7 +13,7 @@
 <!--[if lt IE 8]>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ie.css" type="text/css" media="screen, projection"/>
 <![endif]-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 </head>
 <body>
 <h3>

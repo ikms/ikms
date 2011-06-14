@@ -54,10 +54,10 @@ public class UserService<T extends User> implements IUserService<T> {
 	 * @see net.sf.ssi.service.IUserService#findAll()
 	 */
 	@Override
-	public List<T> findAll() throws DataAccessException {
+	public List<T> find(T entity) throws DataAccessException {
 		List<T> entityList =null;
 		try {
-			entityList = mapper.find(null);
+			entityList = mapper.find(entity);
 		} catch (DataAccessException e) {
 			throw e;
 		}
