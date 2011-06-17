@@ -22,7 +22,7 @@ public interface IUserService<T> {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public T getInfoByKey(String key) throws DataAccessException;
+	public T findByKey(String key) throws DataAccessException;
 
 	/**
 	 * 持久化Entity
