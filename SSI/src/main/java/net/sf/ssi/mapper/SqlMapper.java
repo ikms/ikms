@@ -29,7 +29,7 @@ public interface SqlMapper<T> {
 	/**
 	 * 根据主键获取实体信息
 	 */
-	public T getInfoByKey(String key);
+	public T findByKey(String key);
 	/**
 	 * 获取全部实体
 	 */

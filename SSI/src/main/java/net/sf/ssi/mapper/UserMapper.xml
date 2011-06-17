@@ -39,8 +39,8 @@
 			DELETE FROM T_IKMS_USER WHERE USER_ID = #{userId}
 		]]>
 	</delete>
-	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
-	<select id="getInfoByKey" parameterType="String" resultType="UserPOJO">
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis-config.xml中的别名 -->
+	<select id="findByKey" parameterType="String" resultType="UserPOJO">
 		<![CDATA[
             SELECT * FROM T_IKMS_USER WHERE USER_ID=#{key}
         ]]>
