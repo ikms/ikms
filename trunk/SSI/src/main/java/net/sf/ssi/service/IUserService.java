@@ -6,6 +6,7 @@ package net.sf.ssi.service;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
@@ -13,16 +14,16 @@ import org.springframework.dao.DataAccessException;
  * @version 0.1, 2011-5-25 上午10:24:35
  * 
  */
-// @Transactional
+@Transactional
 public interface IUserService<T> {
 	/**
 	 * 获取Entity信息
 	 * 
-	 * @param key
+	 * @param entity
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public T findByKey(String key) throws DataAccessException;
+	public T findByKey(T entity) throws DataAccessException;
 
 	/**
 	 * 持久化Entity
@@ -31,8 +32,10 @@ public interface IUserService<T> {
 	 * @throws DataAccessException
 	 */
 	public void save(T entity) throws DataAccessException;
+
 	/**
 	 * 获取实体
+	 * 
 	 * @param entity
 	 * @return
 	 * @throws DataAccessException

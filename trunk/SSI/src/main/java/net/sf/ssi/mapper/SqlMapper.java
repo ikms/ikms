@@ -5,6 +5,8 @@ package net.sf.ssi.mapper;
 
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
+
 /**
  * 
  * @author zhangyj
@@ -17,21 +19,21 @@ public interface SqlMapper<T> {
 	/**
 	 * 添加实体 
 	 */
-	public void add(T entity);
+	public void add(T entity) throws DataAccessException;
 	/**
 	 * 编辑实体
 	 */
-	public void edit(T entity);
+	public void edit(T entity) throws DataAccessException;
 	/**
 	 * 移除实体
 	 */
-	public void remove(T entity);
+	public void remove(T entity) throws DataAccessException;
 	/**
 	 * 根据主键获取实体信息
 	 */
-	public T findByKey(String key);
+	public T findByKey(T entity) throws DataAccessException;
 	/**
 	 * 获取全部实体
 	 */
-	public List<T> find(T entity);
+	public List<T> find(T entity) throws DataAccessException;
 }

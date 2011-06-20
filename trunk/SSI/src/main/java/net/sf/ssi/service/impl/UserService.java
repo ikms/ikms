@@ -24,14 +24,14 @@ import org.springframework.stereotype.Service;
 public class UserService<T extends User> implements IUserService<T> {
 	
 	@Inject
-	//@Autowired 等同@Inject , 详见Spring3.0.x新特性之一。
+	//@Autowired //等同@Inject , 详见Spring3.0.x新特性之一。
 	private UserMapper<T> mapper;
 
 	@Override
-	public T findByKey(String key) throws DataAccessException {
+	public T findByKey(T argEntity) throws DataAccessException {
 		 T entity = null;
 	        try {
-	            entity = mapper.findByKey(key);
+	            entity = mapper.findByKey(argEntity);
 	        } catch (DataAccessException e) {
 	            throw e;
 	        }

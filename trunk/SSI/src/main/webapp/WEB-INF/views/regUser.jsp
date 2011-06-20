@@ -49,7 +49,10 @@ function checkpage(){
 					<fieldset>
 	            		<legend>用户注册</legend>
 	            		<p>
-							<label for="id_userName">用户名：</label>
+							<label for="id_userAccount">用户账户：</label>
+							<input type="text" class="title" name="userAccount" id="id_userAccount" value=""/><br/>
+							
+							<label for="id_userName">用户姓名：</label>
 							<input type="text" class="title" name="userName" id="id_userName" value=""/><br/>
 							
 							<label for="id_password">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>

@@ -4,7 +4,7 @@
 <!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
 <mapper namespace="net.sf.ssi.mapper.UserMapper">
 	<resultMap type="UserPOJO" id="userResultMap">
-		<result property="userId" column="user_id"/>
+		<id property="userId" column="user_id"/>
 		<result property="userAccount" column="user_account" />
 		<result property="userName" column="user_name" />
 		<result property="userPassword" column="user_password" />
@@ -12,11 +12,12 @@
 		<result property="userSource" column="user_source" />
 		<result property="createDate" column="create_date"/>
 	</resultMap>
-
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis-config.xml中的别名 -->
 	<insert id="add" parameterType="UserPOJO">
 		<![CDATA[
-            INSERT INTO T_IKMS_USER(USER_ID,USER_NAME,USER_PASSWORD)
-            	VALUES(#{userId},#{userName},#{userPassword})
+            INSERT INTO T_IKMS_USER
+            	(USER_ID,USER_ACCOUNT,USER_NAME,USER_PASSWORD,NICK_NAME,USER_SOURCE,CREATE_DATE)
+            	VALUES(#{userId},#{userAccount},#{userName},#{userPassword},#{nickName},#{userSource},#{createDate})
         ]]>
 	</insert>
 	
@@ -39,15 +40,19 @@
 			DELETE FROM T_IKMS_USER WHERE USER_ID = #{userId}
 		]]>
 	</delete>
-	<!-- id和mapper接口中的方法名对应，resultType使用mybatis-config.xml中的别名 -->
-	<select id="findByKey" parameterType="String" resultType="UserPOJO">
+	
+	<select id="findByKey" parameterType="UserPOJO" resultMap="userResultMap">
 		<![CDATA[
-            SELECT * FROM T_IKMS_USER WHERE USER_ID=#{key}
+            SELECT USER_ID,USER_ACCOUNT,USER_NAME,USER_PASSWORD,NICK_NAME,USER_SOURCE,CREATE_DATE 
+            	 FROM T_IKMS_USER 
+            	 WHERE 
+            	 USER_ID=#{userId}
         ]]>
 	</select>
 	<select id="find" parameterType="UserPOJO" resultMap="userResultMap">
 		<![CDATA[
-            SELECT * FROM T_IKMS_USER 
+            SELECT USER_ID,USER_ACCOUNT,USER_NAME,USER_PASSWORD,NICK_NAME,USER_SOURCE,CREATE_DATE 
+            	 FROM T_IKMS_USER 
         ]]>
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 			<if test="userId != null and userId != '' ">

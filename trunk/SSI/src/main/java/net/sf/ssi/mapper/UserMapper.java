@@ -2,6 +2,8 @@
  * 
  */
 package net.sf.ssi.mapper;
+
+
 /**
  * 
  * @author zhangyj
@@ -10,5 +12,4 @@ package net.sf.ssi.mapper;
  * 
  */
 public interface UserMapper<T> extends SqlMapper<T> {
-	
 }

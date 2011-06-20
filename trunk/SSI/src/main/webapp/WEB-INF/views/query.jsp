@@ -14,6 +14,7 @@
 			<td>用户名</td>
 			<td>密码</td>
 			<td>创建日期</td>
+			<td>操作</td>
 		</tr>
 		<c:forEach items="${userList}" var="user">
 		<tr>
@@ -21,6 +22,7 @@
 			<td>${user.userName }</td>
 			<td>${user.userPassword }</td>
 			<td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+			<td><a href="${pageContext.request.contextPath}/usercenter/getInfo3/${user.userId}.html">View</a></td>
 		</tr>
 		</c:forEach>
 	</table>
