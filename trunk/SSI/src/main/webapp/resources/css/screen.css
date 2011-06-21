@@ -103,6 +103,11 @@ form.inline p {margin-bottom:0;}
 .success a {color:#264409;}
 .info a {color:#205791;}
 
+/*zhangyj*/
+.pageheader{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#fff6bf;color:#514721;border-color:#ffd324;}
+.pageleft{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#e6efc2;color:#264409;border-color:#c6d880;}
+.pagecontent{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#d5edf8;color:#205791;border-color:#92cae4;}
+
 /* grid.css */
 .container {width:950px;margin:0 auto;}
 .showgrid {background:url(src/grid.png);}
