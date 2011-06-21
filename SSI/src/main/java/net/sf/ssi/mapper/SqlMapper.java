@@ -10,7 +10,8 @@ import org.springframework.dao.DataAccessException;
 /**
  * 
  * @author zhangyj
- * @version 0.1, 2011-5-25 上午10:06:09
+ * @version 1.0
+ * @date 2011-5-25 上午10:06:09
  * @param <T>
  *
  */

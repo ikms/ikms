@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.sf.ssi.mapper.AccountMapper">
+	<resultMap type="AccountPOJO" id="accountResultMap">
+		<result property="accountNum" column="account_num"/>
+		<result property="accountId" column="account_id" />
+		<result property="accountName" column="account_name" />
+		<result property="accountPassword" column="account_password" />
+		<result property="accountEmail" column="account_email" />
+		<result property="accountStatus" column="account_status" />
+		<result property="createDate" column="create_date"/>
+	</resultMap>
+	
+	<insert id="add" parameterType="AccountPOJO">
+		<![CDATA[
+            INSERT INTO T_IKMS_ACCOUNT
+            	(ACCOUNT_NUM,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_PASSWORD,ACCOUNT_EMAIL,ACCOUNT_STATUS,CREATE_DATE)
+            	VALUES(#{accountNum},#{accountId},#{accountName},#{accountPassword},#{accountEmail},#{accountStatus},#{createDate})
+        ]]>
+	</insert>
+	
+	<update id="edit" parameterType="AccountPOJO"></update>
+	
+	<delete id="remove" parameterType="AccountPOJO"></delete>
+	
+	<select id="findByKey" parameterType="AccountPOJO" resultMap="accountResultMap">
+		<![CDATA[
+            SELECT ACCOUNT_NUM,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_PASSWORD,ACCOUNT_EMAIL,ACCOUNT_STATUS,CREATE_DATE 
+            	 FROM T_IKMS_ACCOUNT 
+            	 WHERE 
+            	 ACCOUNT_NUM=#{accountNum}
+        ]]>
+	</select>
+	<select id="find" parameterType="AccountPOJO" resultMap="accountResultMap">
+		<![CDATA[
+            SELECT ACCOUNT_NUM,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_PASSWORD,ACCOUNT_EMAIL,ACCOUNT_STATUS,CREATE_DATE 
+            	 FROM T_IKMS_ACCOUNT 
+        ]]>
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="accountId != null and accountId != '' ">
+				AND ACCOUNT_NUM = #{accountNum}
+			</if>
+			<if test="accountId != null and accountId != '' ">
+				AND ACCOUNT_ID = #{accountId}
+			</if>
+			<if test="accountName != null and accountName != '' ">
+				AND ACCOUNT_NAME = #{accountName}
+			</if>
+			<if test="accountPassword != null and accountPassword != ''">
+				AND ACCOUNT_PASSWORD = #{accountPassword}
+			</if>
+			<if test="accountEmail != null and accountEmail != '' ">
+				AND ACCOUNT_EMAIL = #{accountEmail}
+			</if>
+			<if test="accountStatus != null and accountStatus != '' ">
+				AND ACCOUNT_STATUS = #{accountStatus}
+			</if>
+			<if test="createDate != null and createDate != '' ">
+				AND CREATE_DATE = #{createDate}
+			</if>
+		</trim>
+		<![CDATA[
+			 ORDER BY CREATE_DATE
+		]]>
+	</select>
+</mapper>
