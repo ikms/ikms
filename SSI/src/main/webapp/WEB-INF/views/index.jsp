@@ -43,7 +43,7 @@
               <label for="id_accountPassword">密码:</label><br>
               <input type="password" class="title" name="accountPassword" id="id_accountPassword" value="">
             </p>
-            <p>
+            <p align="right">
               <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
 				<img src="${pageContext.request.contextPath}/resources/css/buttons/icons/tick.png" alt=""/> 登  录
 			  </button>
