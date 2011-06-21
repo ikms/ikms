@@ -7,10 +7,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 账户信息
+ * 用户信息
  * 
  * @author zhangyj
- * @version 0.1, 2011-5-25 上午09:56:45
+ * @version 1.0
+ * @date 2011-5-25 上午09:56:45
  * 
  */
 public class User implements Serializable {
@@ -39,12 +40,6 @@ public class User implements Serializable {
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -57,17 +52,35 @@ public class User implements Serializable {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public String getUserSource() {
-		return userSource;
-	}
-	public void setUserSource(String userSource) {
-		this.userSource = userSource;
-	}
 	public Date getCreateDate() {
 		return createDate;
 	}
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	/**
+	 * @param userName the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+	/**
+	 * @param userSource the userSource to set
+	 */
+	public void setUserSource(String userSource) {
+		this.userSource = userSource;
+	}
+	/**
+	 * @return the userSource
+	 */
+	public String getUserSource() {
+		return userSource;
 	}
 	
 }

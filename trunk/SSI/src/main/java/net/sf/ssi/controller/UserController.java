@@ -1,13 +1,11 @@
 package net.sf.ssi.controller;
 
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import net.sf.ikms.util.CommonUtils;
+import net.sf.ikms.util.date.DateUtils;
 import net.sf.ssi.domain.User;
 import net.sf.ssi.service.IUserService;
 
@@ -48,7 +46,7 @@ public class UserController {
 		User arguser = new User();
 		arguser.setUserId(userId);
 		User user = userService.findByKey(arguser);
-		System.out.println(user.getUserName());
+		System.out.println(user.getNickName());
 		return "userInfo";
 	}
 	@RequestMapping(value="/getInfo3/{userId}")
@@ -67,31 +65,16 @@ public class UserController {
 	@RequestMapping(value="/signup",method = RequestMethod.POST)
 	public String signup(@ModelAttribute("user") User user, Model model){
 		user.setUserId(CommonUtils.getGUID());
-		user.setNickName(user.getUserName());
-		user.setUserSource("reg");
-		Date dateTime = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String dateString = format.format(dateTime);
-		ParsePosition pos = new ParsePosition(0);
-//		Date dateTime = format.parse(dateString, pos);
-		user.setCreateDate(format.parse(dateString, pos));
+		user.setNickName(user.getNickName());
+		user.setCreateDate(DateUtils.getCurrDate());
 		userService.save(user);
 		model.addAttribute("title","用户注册");
 		return "redirect:query.html";
 	}
 	@RequestMapping(value="/query")
 	public String query(Model model){
-		//User user = new User();
-		//user.setUserId("1");
 		List<User> userList = userService.find(null);
 		model.addAttribute("userList",userList);
 		return "query";
 	}
-//
-//	public IUserService<User> getUserService() {
-//		return userService;
-//	}
-//	public void setUserService(IUserService<User> userService) {
-//		this.userService = userService;
-//	}
 }
