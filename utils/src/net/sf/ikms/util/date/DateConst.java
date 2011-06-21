@@ -11,7 +11,7 @@ package net.sf.ikms.util.date;
  * @version 1.0
  * @date 2010-06-07
  */
-public class DateConst {
+public final class DateConst {
 
 	/**
 	 * 标准格式：yyyy-MM-dd HH:mm:ss，示例：2009-01-26 07:35:48
