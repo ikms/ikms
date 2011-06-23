@@ -12,11 +12,10 @@ import java.util.UUID;
  * 
  * @author <b>oxidy</b>, Copyright &#169; 2003
  * @since jdk 1.5
- * @version 1.0 , 2003/09/01
- * @date 2011-6-11 下午03:06:14
+ * @since 11 June 2011
  * 
  */
-public class CommonUtils {
+public abstract class CommonUtils {
 	/**
 	 * 生成标准的GUID字符串。
 	 * @return 生成的惟一的标识字符串

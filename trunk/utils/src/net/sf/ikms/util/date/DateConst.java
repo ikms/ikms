@@ -8,8 +8,7 @@ package net.sf.ikms.util.date;
  * 时间日期工具类中的常量
  * 
  * @author <b>Oxidy</b>, Copyright &#169; 2003
- * @version 1.0
- * @date 2010-06-07
+ * @since 07 June 2010
  */
 public final class DateConst {
 
