@@ -12,6 +12,33 @@
 <![endif]-->
 <link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
+<script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#browser").html(browser());
+	$("#browserFull").html(navigator.userAgent);
+});
+function browser(){
+	var bInfo="未知浏览器";
+	var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+
+    //以下进行测试
+    if (Sys.ie) bInfo = 'Microsoft Internet Explorer ' + Sys.ie;
+    if (Sys.firefox) bInfo = 'Mozilla Firefox ' + Sys.firefox;
+    if (Sys.chrome) bInfo = 'Google Chrome ' + Sys.chrome;
+    if (Sys.opera) bInfo = 'Opera ' + Sys.opera;
+    if (Sys.safari) bInfo = 'Apple Safari ' + Sys.safari;
+    
+	return bInfo;
+}
+</script>
 </head>
 <body>
 <div class="container">
@@ -26,9 +53,10 @@
 			<h3>demo List</h3>
 			<ul>
 				<li><a href="${httpBase}showcase.html">ikms-showcase</a></li>
-				<li><a href="#">博客管理系统</a></li>
-				<li><a href="#">日志管理系统</a></li>
-				<li><a href="#">财务管理系统</a></li>
+				<li><a href="${httpBase}logManage">日志管理系统</a></li>
+				<li><a href="${httpBase}bugTrack">Bug跟踪系统</a></li>
+				<li><a href="${httpBase}blog">博客管理系统</a></li>
+				<li><a href="${httpBase}finance">财务管理系统</a></li>
 			</ul>
 		</div>
 	</div>
@@ -45,7 +73,10 @@
             </p>
             <p align="right">
               <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
-				<img src="${pageContext.request.contextPath}/resources/css/buttons/icons/tick.png" alt=""/> 登  录
+				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 登  录
+			  </button>
+              <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
+				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 注  册
 			  </button>
             </p>
 		</div>
@@ -57,7 +88,9 @@
 		<a href="${httpBase}about.html">About</a>  
 		<a href="http://oxidy.javaeye.com">Author Blog</a>
 		<a href="http://ikms.googlecode.com">Google Code</a> 
-		<a href="http://ikms.sourceforge.net">Sourceforge.net Home</a> 
+		<a href="http://ikms.sourceforge.net">Sourceforge.net Home</a> <br/>
+		浏览器：<span id="browser"></span><br/>
+		浏览器详细参数：<span id="browserFull"></span>
 		</div>
 	</div>
 </div>

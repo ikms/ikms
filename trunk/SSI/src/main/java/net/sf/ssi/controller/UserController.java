@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 
@@ -34,26 +33,12 @@ public class UserController {
 	@Inject
 	public IUserService<User> userService;
 	
-	@RequestMapping(value="/getInfo",method=RequestMethod.GET)
-    public String getInfo(@RequestParam("userId") String id,Model model){
-		model.addAttribute("user",id);
-		logger.info("=="+id+"==");
-    	return "userInfo";
-    }
-	@RequestMapping(value="/getInfo2/{userId}")
-	public String getInfo2(@PathVariable String userId, Model model){
-		model.addAttribute("user",userId);
-		User arguser = new User();
-		arguser.setUserId(userId);
-		User user = userService.findByKey(arguser);
-		System.out.println(user.getNickName());
-		return "userInfo";
-	}
 	@RequestMapping(value="/getInfo3/{userId}")
 	public String getInfo3(@PathVariable String userId, Model model){
 		User arguser = new User();
 		arguser.setUserId(userId);
 		User user = userService.findByKey(arguser);
+		logger.info(userId);
 		model.addAttribute("user",user);
 		return "userInfofromdb";
 	}
