@@ -18,12 +18,11 @@ import org.slf4j.LoggerFactory;
  * 时间日期工具类
  * 
  * @author <b>oxidy</b>, Copyright &#169; 2003
- * @version 1.0
- * @date 2011-6-20 下午05:02:36
+ * @since 20 June 2011
  * @Depends  slf4j-log4j12-1.6.x.jar <br/>slf4j-api-1.6.x.jar
  * 
  */
-public class DateUtils {
+public abstract class DateUtils {
 	private static Logger logger = LoggerFactory.getLogger(DateUtils.class);
 
 	/**
