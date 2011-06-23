@@ -16,7 +16,6 @@
 <div class="container">
 <br />
 <br />
-<br />
 <h3>
 JQuery 1.6.x + Spring 3.0.x MVC REST + Mybatis 3.0.x + MySQL 5.0.x/5.x + Tomcat 6.0.x/7.0.x
 </h3>
