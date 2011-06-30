@@ -42,11 +42,13 @@ public class UserController {
 		model.addAttribute("user",user);
 		return "userInfofromdb";
 	}
+	
 	@RequestMapping(value="/regUser")
 	public String regUser(Model model){
 		model.addAttribute("title","用户注册");
 		return "regUser";
 	}
+	
 	@RequestMapping(value="/signup",method = RequestMethod.POST)
 	public String signup(@ModelAttribute("user") User user, Model model){
 		user.setUserId(CommonUtils.getGUID());
@@ -56,6 +58,7 @@ public class UserController {
 		model.addAttribute("title","用户注册");
 		return "redirect:query.html";
 	}
+	
 	@RequestMapping(value="/query")
 	public String query(Model model){
 		List<User> userList = userService.find(null);
