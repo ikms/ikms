@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ikms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>日志管理</title>
 <link rel="stylesheet" href="${base}/resources/css/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/print.css" type="text/css" media="print"/>
 <!--[if lt IE 8]>
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
+<script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browser").html(browser());
@@ -48,37 +49,29 @@ function browser(){
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
-	<div class="column span-15">
-		<div class="pageleft" style="height: 400px;">
-			<h3>demo List</h3>
-			<ul>
-				<li><a href="${httpBase}showcase.html">ikms-showcase</a></li>
-				<li><a href="${httpBase}logManage.html">日志管理系统</a></li>
-				<li><a href="${httpBase}bugTrack.html">Bug跟踪系统</a></li>
-				<li><a href="${httpBase}blog.html">博客管理系统</a></li>
-				<li><a href="${httpBase}finance.html">财务管理系统</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="column span-9 last">
-		<div class="pagecontent" style="height: 400px;">
-			<h3>用户登录</h3>
-			<p>
-              <label for="id_accountName">帐号:</label><br>
-              <input type="text" class="title" name="accountName" id="id_accountName" value="">
-            </p>
-			<p>
-              <label for="id_accountPassword">密码:</label><br>
-              <input type="password" class="title" name="accountPassword" id="id_accountPassword" value="">
-            </p>
-            <p align="right">
-              <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
-				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 登  录
-			  </button>
-              <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
-				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 注  册
-			  </button>
-            </p>
+	<div class="column span-24">
+		<div class="pagecontent">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>日期：</td>
+					<td><input type="text" class="title Wdate" name="date" id="id_date" value="" onfocus="WdatePicker()"/></td>
+				</tr>
+				<tr>
+					<td>主题：</td>
+					<td><input type="text" class="title span-16" name="date" id="id_date" value=""></td>
+				</tr>
+				<tr>
+					<td>内容：</td>
+					<td><textarea name="logContent" id="id_logContent" rows="5" cols="20" class="span-16"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
+							<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 保   存
+						</button>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="column span-24">
@@ -95,4 +88,4 @@ function browser(){
 	</div>
 </div>
 </body>
-</html> 
+</html>
