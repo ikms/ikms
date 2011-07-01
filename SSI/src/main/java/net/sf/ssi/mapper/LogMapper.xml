@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="net.sf.ssi.mapper.LogMapper">
+
+	<resultMap type="LogPOJO" id="logResultMap">
+		<id property="logId" column="log_id"/>
+		<result property="accountNum" column="account_num"/>
+		<result property="logTitle" column="log_title" />
+		<result property="logContent" column="log_content" />
+		<result property="createDate" column="create_date"/>
+		<result property="lastEditDate" column="lastedit_date"/>
+	</resultMap>
+	
+	<insert id="add" parameterType="LogPOJO">
+		<![CDATA[
+            INSERT INTO T_IKMS_LOG
+            	(LOG_ID,LOG_TITLE,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE)
+            	VALUES(#{logId},#{logTitle},#{logContent},#{createDate},#{lastEditDate})
+        ]]>
+	</insert>
+	
+	<update id="edit" parameterType="LogPOJO">
+		<![CDATA[
+			UPDATE T_IKMS_LOG
+		]]>
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="logTitle !=null and logTitle !=''">
+				LOG_TITLE = #{logTitle},
+			</if>
+			<if test="logContent !=null and logContent !=''">
+				LOG_CONTENT = #{logContent},
+			</if>
+			<if test="lastEditDate !=null and lastEditDate !=''">
+				LASTEDIT_DATE = #{lastEditDate},
+			</if>
+		</trim>
+		<![CDATA[
+			WHERE LOG_ID = #{logId}
+		]]>
+	</update>
+	
+	<delete id="remove" parameterType="LogPOJO">
+		<![CDATA[
+			DELETE FROM T_IKMS_LOG WHERE LOG_ID = #{logId}
+		]]>
+	</delete>
+	
+	<select id="findByKey" parameterType="LogPOJO" resultMap="logResultMap">
+		<![CDATA[
+            SELECT LOG_ID,LOG_TITLE,A.ACCOUNT_NUM,A.ACCOUNT_NAME,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE  
+            	 FROM T_IKMS_LOG 
+            	 LEFT JOIN T_IKMS_ACCOUNT A ON A.ACCOUNT_NUM = T_IKMS_LOG.ACCOUNT_NUM
+            	 WHERE 
+            	 LOG_ID=#{logId}
+        ]]>
+	</select>
+	<select id="find" parameterType="LogPOJO" resultMap="logResultMap">
+		<![CDATA[
+            SELECT LOG_ID,LOG_TITLE,ACCOUNT_NUM,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE  
+            	 FROM T_IKMS_LOG 
+        ]]>
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="userId != null and userId != '' ">
+				AND LOG_ID = #{userId}
+			</if>
+			<if test="accountNum >0 ">
+				AND ACCOUNT_NUM = #{accountNum}
+			</if>
+			<if test="createDate != null and createDate != '' ">
+				AND CREATE_DATE = #{createDate}
+			</if>
+		</trim>
+		<![CDATA[
+			 ORDER BY LOG_ID
+		]]>
+	</select>
+</mapper>
