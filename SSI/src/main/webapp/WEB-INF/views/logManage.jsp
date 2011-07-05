@@ -23,18 +23,8 @@ $(document).ready(function(){
 function Opera(){
 	cssDisplay("id_addLog");
 }
-function checkpage(){
-	var date = $("#id_date").val();
-	if(date==""){
-	}
-	return true;
-}
 function save(){
-	if(checkpage()){
-		alert("aaa");
-	}else{
-		alert("ccc");
-	}
+	
 }
 </script>
 </head>
