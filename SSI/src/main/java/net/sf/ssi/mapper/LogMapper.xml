@@ -6,18 +6,18 @@
 
 	<resultMap type="LogPOJO" id="logResultMap">
 		<id property="logId" column="log_id"/>
-		<result property="accountNum" column="account_num"/>
 		<result property="logTitle" column="log_title" />
 		<result property="logContent" column="log_content" />
 		<result property="createDate" column="create_date"/>
 		<result property="lastEditDate" column="lastedit_date"/>
+		<association property="AccountPOJO" column="account_num" select="findByKey"/>
 	</resultMap>
 	
 	<insert id="add" parameterType="LogPOJO">
 		<![CDATA[
             INSERT INTO T_IKMS_LOG
-            	(LOG_ID,LOG_TITLE,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE)
-            	VALUES(#{logId},#{logTitle},#{logContent},#{createDate},#{lastEditDate})
+            	(LOG_ID,LOG_TITLE,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE,ACCOUNT_NUM)
+            	VALUES(#{logId},#{logTitle},#{logContent},#{createDate},#{lastEditDate},#{account.accountNum})
         ]]>
 	</insert>
 	

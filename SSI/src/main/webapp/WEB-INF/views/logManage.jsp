@@ -20,11 +20,42 @@ $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
 	$("#id_addLog").css("display","none");
 });
-function Opera(){
+//将一个表单的数据返回成JSON对象  
+$.fn.serializeObject = function() {
+	var o = {};
+	var a = this.serializeArray();
+	$.each(a, function() {
+		if (o[this.name]) {
+			if (!o[this.name].push) {
+				o[this.name] = [ o[this.name] ];
+			}
+			o[this.name].push(this.value || '');
+		} else {
+			o[this.name] = this.value || '';
+		}
+	});
+	return o;
+};
+
+function Opera() {
 	cssDisplay("id_addLog");
 }
-function save(){
-	
+function save() {
+	//alert("${httpBase}log/add.html");
+	alert($("#id_addLogFrm").serializeObject().toString());
+	$.ajax({
+		type : "post",
+		//contentType : "application/json",
+		data : $("#id_addLogFrm").serializeObject(),
+		dataType : "json",
+		url : "${httpBase}log/add.html",
+		success : function(data) {
+
+		},
+		error : function(data) {
+
+		}
+	});
 }
 </script>
 </head>
@@ -39,27 +70,29 @@ function save(){
 	<div class="column span-24">
 		<div class="pagecontent">
 			<a href="javascript:Opera()">添加日志</a>
-			<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td>日期：</td>
-					<td><input type="text" class="title Wdate" name="date" id="id_date" value="" onfocus="WdatePicker()"/></td>
-				</tr>
-				<tr>
-					<td>主题：</td>
-					<td><input type="text" class="title span-16" name="date" id="id_date" value=""></td>
-				</tr>
-				<tr>
-					<td>内容：</td>
-					<td><textarea name="logContent" id="id_logContent" rows="5" cols="20" class="span-16"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button id="id_submit" type="button" class="button positive" onclick="save();">
-							<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 保   存
-						</button>
-					</td>
-				</tr>
-			</table>
+			<form id="id_addLogFrm" method="post">
+				<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>日期：</td>
+						<td><input type="text" class="title Wdate" name="createDate" id="id_createDate" value="" onfocus="WdatePicker()"/></td>
+					</tr>
+					<tr>
+						<td>主题：</td>
+						<td><input type="text" class="title span-16" name="logTitle" id="id_logTitle" value=""></td>
+					</tr>
+					<tr>
+						<td>内容：</td>
+						<td><textarea name="logContent" id="id_logContent" rows="5" cols="20" class="span-16"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button id="id_submit" type="button" class="button positive" onclick="save();">
+								<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 保   存
+							</button>
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	<div class="column span-24">

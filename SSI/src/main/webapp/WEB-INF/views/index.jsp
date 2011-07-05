@@ -15,7 +15,6 @@
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#browser").html(browser());
 	$("#browserFull").html(navigator.userAgent);
 });
 function browser(){
@@ -89,7 +88,6 @@ function browser(){
 		<a href="http://oxidy.javaeye.com">Author Blog</a>
 		<a href="http://ikms.googlecode.com">Google Code</a> 
 		<a href="http://ikms.sourceforge.net">Sourceforge.net Home</a> <br/>
-		浏览器：<span id="browser"></span><br/>
 		浏览器详细参数：<span id="browserFull"></span>
 		</div>
 	</div>
