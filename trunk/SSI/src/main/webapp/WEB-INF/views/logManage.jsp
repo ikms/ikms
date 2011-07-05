@@ -13,31 +13,28 @@
 <link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
+<script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
 <script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#browser").html(browser());
 	$("#browserFull").html(navigator.userAgent);
+	$("#id_addLog").css("display","none");
 });
-function browser(){
-	var bInfo="未知浏览器";
-	var Sys = {};
-    var ua = navigator.userAgent.toLowerCase();
-    var s;
-    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
-    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
-    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
-    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
-    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
-
-    //以下进行测试
-    if (Sys.ie) bInfo = 'Microsoft Internet Explorer ' + Sys.ie;
-    if (Sys.firefox) bInfo = 'Mozilla Firefox ' + Sys.firefox;
-    if (Sys.chrome) bInfo = 'Google Chrome ' + Sys.chrome;
-    if (Sys.opera) bInfo = 'Opera ' + Sys.opera;
-    if (Sys.safari) bInfo = 'Apple Safari ' + Sys.safari;
-    
-	return bInfo;
+function Opera(){
+	cssDisplay("id_addLog");
+}
+function checkpage(){
+	var date = $("#id_date").val();
+	if(date==""){
+	}
+	return true;
+}
+function save(){
+	if(checkpage()){
+		alert("aaa");
+	}else{
+		alert("ccc");
+	}
 }
 </script>
 </head>
@@ -51,7 +48,8 @@ function browser(){
 	</div>
 	<div class="column span-24">
 		<div class="pagecontent">
-			<table border="0" cellspacing="0" cellpadding="0">
+			<a href="javascript:Opera()">添加日志</a>
+			<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td>日期：</td>
 					<td><input type="text" class="title Wdate" name="date" id="id_date" value="" onfocus="WdatePicker()"/></td>
@@ -66,12 +64,32 @@ function browser(){
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
+						<button id="id_submit" type="button" class="button positive" onclick="save();">
 							<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 保   存
 						</button>
 					</td>
 				</tr>
 			</table>
+		</div>
+	</div>
+	<div class="column span-24">
+		<div class="pageheader">
+			分页：
+		</div>
+	</div>
+	<%
+		for(int i=1;i<=15;i++){
+	%>
+	<div class="column span-24">
+		<div class="pagecontent" style="height: 40px;">
+			<div class="span-3"><div class="pageheader">2011-07-<%=i %></div></div>
+			<div class="span-20"><div class="pageleft">今天的主要工作是我也不知道做了些什么事情</div></div>
+		</div>
+	</div>
+	<%} %>
+	<div class="column span-24">
+		<div class="pageheader">
+			分页：
 		</div>
 	</div>
 	<div class="column span-24">
@@ -82,7 +100,6 @@ function browser(){
 		<a href="http://oxidy.javaeye.com">Author Blog</a>
 		<a href="http://ikms.googlecode.com">Google Code</a> 
 		<a href="http://ikms.sourceforge.net">Sourceforge.net Home</a> <br/>
-		浏览器：<span id="browser"></span><br/>
 		浏览器详细参数：<span id="browserFull"></span>
 		</div>
 	</div>
