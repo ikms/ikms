@@ -16,7 +16,6 @@ import net.sf.ssi.service.ILogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +49,7 @@ public class LogController {
 		log.setAccount(account);
 		logService.save(log);
 //		model.addAttribute("title","添加日志信息");
+		logger.info("LogController.add()");
 		return "redirect:/log/query.html";
 	}
 }
