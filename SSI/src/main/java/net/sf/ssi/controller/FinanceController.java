@@ -1,5 +1,5 @@
 /*
- * @(#)AccountController.java
+ * @(#)FinanceController.java
  * Copyright (C) 2003-2011 ikms.sourceforge.net All rights reserved
  */
 
@@ -9,15 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 系统帐户信息
+ * 财务情况 Controller
  * 
  * @author zhangyj
- * @version 1.0
- * @date 2011-6-21 上午11:29:13
+ * @version 0.1, 2011-7-21 上午10:05:04
  * 
  */
 @Controller
-@RequestMapping("/account")
-public class AccountController {
+@RequestMapping("/finance")
+public class FinanceController {
 
 }
