@@ -112,6 +112,4 @@ public class Account implements Serializable {
 	public Date getCreateDate() {
 		return createDate;
 	}
-
-	
 }
