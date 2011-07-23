@@ -2,12 +2,12 @@ create database ssi;
 use ssi; 
 DROP TABLE IF EXISTS T_IKMS_USER;
 CREATE TABLE T_IKMS_USER (
-  USER_ID varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户ID',
-  USER_ACCOUNT varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户帐户',
-  USER_NAME varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
-  USER_PASSWORD varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户密码',
-  NICK_NAME varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户昵称',
-  USER_SOURCE varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户来源',
+  USER_ID varchar(50) NOT NULL COMMENT '用户ID',
+  USER_ACCOUNT varchar(50) NOT NULL COMMENT '用户帐户',
+  USER_NAME varchar(50) NOT NULL COMMENT '用户名',
+  USER_PASSWORD varchar(128) NOT NULL COMMENT '用户密码',
+  NICK_NAME varchar(128) NOT NULL COMMENT '用户昵称',
+  USER_SOURCE varchar(128) DEFAULT NULL COMMENT '用户来源',
   CREATE_DATE datetime NOT NULL COMMENT '创建日期',
   PRIMARY KEY (USER_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT '用户信息表';
@@ -15,19 +15,19 @@ CREATE TABLE T_IKMS_USER (
 DROP TABLE IF EXISTS T_IKMS_ACCOUNT;
 CREATE TABLE T_IKMS_ACCOUNT (
   ACCOUNT_NUM INTEGER NOT NULL AUTO_INCREMENT COMMENT '用户数字帐号,唯一',
-  ACCOUNT_ID varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户帐户,唯一',
-  ACCOUNT_NAME varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户昵称,唯一',
-  ACCOUNT_PASSWORD varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '帐户密码',
-  ACCOUNT_EMAIL varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '帐户邮箱,唯一',
-  ACCOUNT_STATUS varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '帐户状态',
+  ACCOUNT_ID varchar(128) UNIQUE NOT NULL COMMENT '用户帐户,唯一',
+  ACCOUNT_NAME varchar(128) UNIQUE NOT NULL COMMENT '用户昵称,唯一',
+  ACCOUNT_PASSWORD varchar(128) NOT NULL COMMENT '帐户密码',
+  ACCOUNT_EMAIL varchar(128) UNIQUE NOT NULL COMMENT '帐户邮箱,唯一',
+  ACCOUNT_STATUS varchar(50) DEFAULT NULL COMMENT '帐户状态',
   CREATE_DATE datetime NOT NULL COMMENT '创建日期',
   PRIMARY KEY (account_num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT '用户帐户信息表';
 
 CREATE TABLE T_IKMS_LOG (
-  LOG_ID varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '日志编码,唯一',
-  LOG_TITLE varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '日志主题(标题)',
-  LOG_CONTENT varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '日志内容',
+  LOG_ID varchar(255) NOT NULL COMMENT '日志编码,唯一',
+  LOG_TITLE varchar(255) DEFAULT NULL COMMENT '日志主题(标题)',
+  LOG_CONTENT varchar(255) NOT NULL COMMENT '日志内容',
   CREATE_DATE datetime NOT NULL COMMENT '日志创建日期',
   LASTEDIT_DATE datetime DEFAULT NULL COMMENT '日志最后编辑日期',
   ACCOUNT_NUM int(11) NOT NULL COMMENT '日志所有者',
