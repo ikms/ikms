@@ -16,6 +16,6 @@ package net.sf.ikms.util;
  * @see org.apache.commons.lang3.StringUtils
  * 
  */
-public abstract class StringUtils extends org.apache.commons.lang3.StringUtils {
+public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	
 }
