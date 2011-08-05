@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @Depends  slf4j-log4j12-1.6.x.jar <br/>slf4j-api-1.6.x.jar
  * 
  */
-public abstract class DateUtils {
+public class DateUtils {
 	private static Logger logger = LoggerFactory.getLogger(DateUtils.class);
 
 	/**
@@ -62,7 +62,7 @@ public abstract class DateUtils {
 	 * @version 1.0
 	 * @date 2010/01/26
 	 */
-	public static Date getCurrDate() {
+	public static Date getCurrentDateDate() {
 		Date dateTime = getCurrentDateTimeDate();
 		return formatTypeDate(dateTime, DateConst.standard_simple_format);
 	}
@@ -74,7 +74,7 @@ public abstract class DateUtils {
 	 * @version 1.0
 	 * @date 2010/01/26
 	 */
-	public static String getCurrDateTime() {
+	public static String getCurrentDate() {
 		Date dateTime = new Date();
 		return formatTypeString(dateTime, DateConst.standard_simple_format);
 	}

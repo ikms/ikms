@@ -15,7 +15,7 @@ import java.util.UUID;
  * @since 11 June 2011
  * 
  */
-public abstract class CommonUtils {
+public class CommonUtils {
 	/**
 	 * 生成标准的GUID字符串。
 	 * @return 生成的惟一的标识字符串
