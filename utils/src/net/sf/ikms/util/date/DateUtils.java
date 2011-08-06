@@ -264,4 +264,18 @@ public class DateUtils {
 		strDateTime = strDateTime.replaceAll(" ", "");
 		return strDateTime;
 	}
+
+	/**
+	 * 按照 <b>pattern模式</b> 及 <b>时区</b> 格式化当前日期并转换为String类型字符串
+	 * 
+	 * @param pattern
+	 *            转换时格式化时间的模式
+	 * @return 格式化并转化为String类型的字符串
+	 * @version 1.0
+	 * @date 2011/08/06
+	 */
+	public static String formatCurrentDate(String pattern) {
+		Date dateTime = new Date();
+		return formatTypeString(dateTime, pattern, Locale.SIMPLIFIED_CHINESE);
+	}
 }
