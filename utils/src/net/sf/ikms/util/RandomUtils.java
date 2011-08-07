@@ -5,6 +5,8 @@
 
 package net.sf.ikms.util;
 
+import java.util.Random;
+
 /**
  * 随机字符生成工具类
  * 
@@ -28,13 +30,13 @@ public class RandomUtils {
 	/**
 	 * 产生由数字和大写字母组成的长度为size大小的随机字符串；
 	 * 
-	 * @param size
+	 * @param length
 	 * @return
 	 */
-	public static String get(int size) {
-		StringBuffer r = new StringBuffer(size);
+	public static String get(int length) {
+		StringBuffer r = new StringBuffer(length);
 		String src = src_number + src_upper;
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < length; i++) {
 			r.append(getRandomChar(src));
 		}
 		return r.toString();
@@ -99,13 +101,13 @@ public class RandomUtils {
 	/**
 	 * 产生由数字组成的长度为size大小的随机字符串
 	 * 
-	 * @param size
+	 * @param length
 	 * @return
 	 */
-	public static String getNum(int size) {
-		StringBuffer r = new StringBuffer(size);
+	public static String getNum(int length) {
+		StringBuffer r = new StringBuffer(length);
 		String src = src_number;
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < length; i++) {
 			r.append(getRandomChar(src));
 		}
 		return r.toString();
@@ -142,13 +144,13 @@ public class RandomUtils {
 	/**
 	 * 产生由十六进制字符组成长度为size大小的随机字符串
 	 * 
-	 * @param size
+	 * @param length
 	 * @return
 	 */
-	public static String getHex(int size) {
-		StringBuffer r = new StringBuffer(size);
+	public static String getHex(int length) {
+		StringBuffer r = new StringBuffer(length);
 		String src = src_hex_upper;
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < length; i++) {
 			r.append(getRandomChar(src));
 		}
 		return r.toString();
@@ -187,5 +189,42 @@ public class RandomUtils {
 			return "";
 		}
 		return String.valueOf((src.charAt((int) (Math.random() * src.length()))));
+	}
+
+	//=============================================================================================//
+	private static final String getRandomStr(String src) {
+		if (null == src || "".equals(src)) {
+			return "";
+		}
+		Random random = new Random();
+		return String.valueOf(src.charAt(random.nextInt(src.length())));
+	}
+	/**
+	 * 生成一个只包含大小写字母、数字并且长度为length的随机字符串
+	 * 
+	 * @param length
+	 *            随机字符串长度
+	 * @return 随机字符串
+	 */
+	public static String getRandomString(int length) {
+		StringBuffer r = new StringBuffer(length);
+		String src = src_number + src_lower + src_upper;
+		for (int i = 0; i < length; i++) {
+			r.append(getRandomStr(src)); 
+		}
+		return r.toString();
+	}
+	/**
+	 * 生成一个只包含大小写字母并且长度为length的随机字符串
+	 * @param length
+	 * @return
+	 */
+	public static String getRandomLetter(int length){
+		StringBuffer r = new StringBuffer(length);
+		String src = src_lower + src_upper;
+		for (int i = 0; i < length; i++) {
+			r.append(getRandomStr(src)); 
+		}
+		return r.toString();
 	}
 }
