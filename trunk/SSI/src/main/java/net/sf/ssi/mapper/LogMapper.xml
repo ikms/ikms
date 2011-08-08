@@ -13,15 +13,6 @@
 		<association property="account" column="account_num" javaType="AccountPOJO" select="net.sf.ssi.mapper.AccountMapper.findByKey"/>
 	</resultMap>
 	
-	<select id="accountFindByKey" parameterType="Integer" resultType="AccountPOJO">
-		<![CDATA[
-			SELECT ACCOUNT_NUM,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_PASSWORD,ACCOUNT_EMAIL,ACCOUNT_STATUS,CREATE_DATE 
-            	 FROM T_IKMS_ACCOUNT 
-            	 WHERE 
-            	 ACCOUNT_NUM=#{accountNum}
-		]]>
-	</select>
-	
 	<insert id="add" parameterType="LogPOJO">
 		<![CDATA[
             INSERT INTO T_IKMS_LOG
@@ -71,16 +62,15 @@
             	 FROM T_IKMS_LOG 
         ]]>
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
-			<if test="userId != null and userId != '' ">
-				AND LOG_ID = #{userId}
+			<if test="logId != null and logId != '' ">
+				AND LOG_ID = #{logId}
 			</if>
 			<if test="accountNum >0 ">
 				AND ACCOUNT_NUM = #{accountNum}
 			</if>
-			
 		</trim>
 		<![CDATA[
-			 ORDER BY LOG_ID
+			 ORDER BY CREATE_TIME DESC
 		]]>
 	</select>
 </mapper>
