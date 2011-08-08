@@ -5,19 +5,28 @@
 <mapper namespace="net.sf.ssi.mapper.LogMapper">
 
 	<resultMap type="LogPOJO" id="logResultMap">
-		<id property="logId" column="log_id"/>
-		<result property="logTitle" column="log_title" />
-		<result property="logContent" column="log_content" />
-		<result property="createDate" column="create_date"/>
-		<result property="lastEditDate" column="lastedit_date"/>
-		<association property="AccountPOJO" column="account_num" select="findByKey"/>
+		<id property="logId" column="log_id" jdbcType="VARCHAR"/>
+		<result property="logTitle" column="log_title" jdbcType="VARCHAR" />
+		<result property="logContent" column="log_content" jdbcType="VARCHAR" />
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="lastEditDate" column="lastedit_date" jdbcType="TIMESTAMP"/>
+		<association property="account" column="account_num" javaType="AccountPOJO" select="net.sf.ssi.mapper.AccountMapper.findByKey"/>
 	</resultMap>
+	
+	<select id="accountFindByKey" parameterType="Integer" resultType="AccountPOJO">
+		<![CDATA[
+			SELECT ACCOUNT_NUM,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_PASSWORD,ACCOUNT_EMAIL,ACCOUNT_STATUS,CREATE_DATE 
+            	 FROM T_IKMS_ACCOUNT 
+            	 WHERE 
+            	 ACCOUNT_NUM=#{accountNum}
+		]]>
+	</select>
 	
 	<insert id="add" parameterType="LogPOJO">
 		<![CDATA[
             INSERT INTO T_IKMS_LOG
-            	(LOG_ID,LOG_TITLE,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE,ACCOUNT_NUM)
-            	VALUES(#{logId},#{logTitle},#{logContent},#{createDate},#{lastEditDate},#{account.accountNum})
+            	(LOG_ID,LOG_TITLE,LOG_CONTENT,CREATE_TIME,LASTEDIT_DATE,ACCOUNT_NUM)
+            	VALUES(#{logId},#{logTitle},#{logContent},#{createTime},#{lastEditDate},#{account.accountNum})
         ]]>
 	</insert>
 	
@@ -49,7 +58,7 @@
 	
 	<select id="findByKey" parameterType="LogPOJO" resultMap="logResultMap">
 		<![CDATA[
-            SELECT LOG_ID,LOG_TITLE,A.ACCOUNT_NUM,A.ACCOUNT_NAME,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE  
+            SELECT LOG_ID,LOG_TITLE,A.ACCOUNT_NUM,A.ACCOUNT_NAME,LOG_CONTENT,CREATE_TIME,LASTEDIT_DATE  
             	 FROM T_IKMS_LOG 
             	 LEFT JOIN T_IKMS_ACCOUNT A ON A.ACCOUNT_NUM = T_IKMS_LOG.ACCOUNT_NUM
             	 WHERE 
@@ -58,7 +67,7 @@
 	</select>
 	<select id="find" parameterType="LogPOJO" resultMap="logResultMap">
 		<![CDATA[
-            SELECT LOG_ID,LOG_TITLE,ACCOUNT_NUM,LOG_CONTENT,CREATE_DATE,LASTEDIT_DATE  
+            SELECT LOG_ID,LOG_TITLE,ACCOUNT_NUM,LOG_CONTENT,CREATE_TIME,LASTEDIT_DATE  
             	 FROM T_IKMS_LOG 
         ]]>
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
@@ -68,9 +77,7 @@
 			<if test="accountNum >0 ">
 				AND ACCOUNT_NUM = #{accountNum}
 			</if>
-			<if test="createDate != null and createDate != '' ">
-				AND CREATE_DATE = #{createDate}
-			</if>
+			
 		</trim>
 		<![CDATA[
 			 ORDER BY LOG_ID
