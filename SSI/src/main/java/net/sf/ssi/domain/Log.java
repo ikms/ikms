@@ -23,7 +23,7 @@ public class Log implements Serializable {
 	private Account account;		// 日志所有者
 	private String logTitle; 		// 日志主题(标题)
 	private String logContent; 		// 日志内容
-	private Date createDate; 		// 日志创建日期
+	private Date createTime; 		// 日志创建日期
 	private Date lastEditDate; 		// 日志最后编辑日期
 	
 	//==============================================//
@@ -51,11 +51,11 @@ public class Log implements Serializable {
 	public void setLogContent(String logContent) {
 		this.logContent = logContent;
 	}
-	public Date getCreateDate() {
-		return createDate;
+	public Date getCreateTime() {
+		return createTime;
 	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 	public Date getLastEditDate() {
 		return lastEditDate;

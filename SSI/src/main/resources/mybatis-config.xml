@@ -4,6 +4,7 @@
 	<!-- 别名 -->
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="String" />
+		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="net.sf.ssi.domain.User" alias="UserPOJO" />
 		<typeAlias type="net.sf.ssi.domain.Account" alias="AccountPOJO" />
 		<typeAlias type="net.sf.ssi.domain.Log" alias="LogPOJO" />
