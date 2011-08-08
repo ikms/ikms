@@ -17,6 +17,21 @@
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
 <script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
 <script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#browserFull").html(navigator.userAgent);
+});
+</script>
+<style type="text/css">
+ul {border: 0;margin: 0;padding: 0;}
+#pagination-flickr li {border: 0;margin: 0;padding: 0;	font-size: 11px;list-style: none;}
+#pagination-flickr a {border: solid 1px #DDDDDD;margin-right: 2px;}
+#pagination-flickr .previous-off,#pagination-flickr .next-off {color: #666666;display: block;float: left;font-weight: bold;	padding: 3px 4px;}
+#pagination-flickr .next a,#pagination-flickr .previous a {	font-weight: bold;	border: solid 1px #FFFFFF;}
+#pagination-flickr .active {color: #ff0084;	font-weight: bold;display: block;float: left;padding: 4px 6px;}
+#pagination-flickr a:link,#pagination-flickr a:visited {color: #0063e3;display: block;float: left;padding: 3px 6px;text-decoration: none;}
+#pagination-flickr a:hover {border: solid 1px #666666;}
+</style>
 </head>
 <body>
 <div class="container">
@@ -27,37 +42,39 @@
 		</div>
 	</div>
 	<div class="column span-24">
-		<div class="pageheader">
-			分页：
-		</div>
+		<table>
+			<thead>
+				<tr height="35px;">
+					<th>日期</th>
+					<th>日志标题</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr align="center">
+					<td colspan="2">
+						<ul id="pagination-flickr">
+							<li class="previous-off">«Previous</li>
+							<li class="active">1</li>
+							<li><a href="?page=2">2</a></li>
+							<li><a href="?page=3">3</a></li>
+							<li><a href="?page=4">4</a></li>
+							<li><a href="?page=5">5</a></li>
+							<li><a href="?page=6">6</a></li>
+							<li><a href="?page=7">7</a></li>
+							<li class="next"><a href="?page=2">Next »</a></li>
+						</ul>
+					</td>
+				</tr>
+			</tfoot>
+			<c:forEach items="${logs}" var="log">
+			<tr height="32px;">
+				<td width="20%"><fmt:formatDate value="${log.createTime}" pattern="yyyy-MM-dd"/></td>
+				<td><c:out value="${log.logTitle}" escapeXml="false"/></td>
+			</tr>
+			</c:forEach>
+		</table>
 	</div>
-	<%
-		List<Log> logs = (List<Log>)request.getAttribute("logs");
-		for(int i=1;i<=logs.size();i++){
-	%>
-	<div class="column span-24">
-		<div class="pagecontent" style="height: 40px;">
-			<div class="span-3"><div class="pageheader"><%=logs.get(i).getCreateTime().toString()%></div></div>
-			<div class="span-20"><div class="pageleft"><%=logs.get(i).getLogTitle() %></div></div>
-		</div>
-	</div>
-	<%} %>
-	<div class="column span-24">
-		<div class="pageheader">
-			分页：
-		</div>
-	</div>
-	<div class="column span-24">
-		<div class="pageheader">
-		<h6>Copyright &#169; 2003-2011 ikms.sourceforge.net All rights reserved <br/></h6>
-		基于JQuery 1.6.x + Spring3 MVC REST + Spring 3.0.x + Mybatis 3.0.x + MySQL 5.0.x/5.x + Tomcat 6.0.x/7.0.x 构建<br/>
-		<a href="${httpBase}about.html">About</a>  
-		<a href="http://oxidy.javaeye.com">Author Blog</a>
-		<a href="http://ikms.googlecode.com">Google Code</a> 
-		<a href="http://ikms.sourceforge.net">Sourceforge.net Home</a> <br/>
-		浏览器详细参数：<span id="browserFull"></span>
-		</div>
-	</div>
+	<jsp:include page="../include/foot.jsp" flush="false"></jsp:include>
 </div>
 </body>
 </html>
