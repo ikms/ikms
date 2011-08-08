@@ -53,7 +53,7 @@ public class UserController {
 	public String signup(@ModelAttribute("user") User user, Model model){
 		user.setUserId(CommonUtils.getGUID());
 		user.setNickName(user.getNickName());
-		user.setCreateDate(DateUtils.getCurrDate());
+		user.setCreateDate(DateUtils.getCurrentDateDate());
 		userService.save(user);
 		model.addAttribute("title","用户注册");
 		return "redirect:query.html";
