@@ -10,10 +10,6 @@ import java.util.Random;
 /**
  * 随机字符生成工具类
  * 
- * 
- * //产生如下格式的随机字符串“Are you W5B?”，可以自己指定临时占位符，这里用“#”； String
- * s5=RandomString.get("Are you ###?",'#');
- * 
  * @author <b>oxidy</b>, Copyright &#169; 2003
  * @since 07 August 2011
  * 
@@ -191,7 +187,7 @@ public class RandomUtils {
 		return String.valueOf((src.charAt((int) (Math.random() * src.length()))));
 	}
 
-	//=============================================================================================//
+	// =============================================================================================//
 	private static final String getRandomStr(String src) {
 		if (null == src || "".equals(src)) {
 			return "";
@@ -199,6 +195,7 @@ public class RandomUtils {
 		Random random = new Random();
 		return String.valueOf(src.charAt(random.nextInt(src.length())));
 	}
+
 	/**
 	 * 生成一个只包含大小写字母、数字并且长度为length的随机字符串
 	 * 
@@ -210,20 +207,22 @@ public class RandomUtils {
 		StringBuffer r = new StringBuffer(length);
 		String src = src_number + src_lower + src_upper;
 		for (int i = 0; i < length; i++) {
-			r.append(getRandomStr(src)); 
+			r.append(getRandomStr(src));
 		}
 		return r.toString();
 	}
+
 	/**
 	 * 生成一个只包含大小写字母并且长度为length的随机字符串
+	 * 
 	 * @param length
 	 * @return
 	 */
-	public static String getRandomLetter(int length){
+	public static String getRandomLetter(int length) {
 		StringBuffer r = new StringBuffer(length);
 		String src = src_lower + src_upper;
 		for (int i = 0; i < length; i++) {
-			r.append(getRandomStr(src)); 
+			r.append(getRandomStr(src));
 		}
 		return r.toString();
 	}
