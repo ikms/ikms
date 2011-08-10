@@ -28,10 +28,10 @@ public class UserService<T extends User> implements IUserService<T> {
 	private UserMapper<T> mapper;
 
 	@Override
-	public T findByKey(T argEntity) throws DataAccessException {
+	public T loadByKey(T argEntity) throws DataAccessException {
 		 T entity = null;
 	        try {
-	            entity = mapper.findByKey(argEntity);
+	            entity = mapper.loadByKey(argEntity);
 	        } catch (DataAccessException e) {
 	            throw e;
 	        }

@@ -28,10 +28,10 @@ public class LogService<T extends Log> implements ILogService<T> {
 	private LogMapper<T> mapper;
 
 	@Override
-	public T findByKey(T argEntity) throws DataAccessException {
+	public T loadByKey(T argEntity) throws DataAccessException {
 		 T entity = null;
 	        try {
-	            entity = mapper.findByKey(argEntity);
+	            entity = mapper.loadByKey(argEntity);
 	        } catch (DataAccessException e) {
 	            throw e;
 	        }

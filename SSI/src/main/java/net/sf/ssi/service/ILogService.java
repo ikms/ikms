@@ -23,7 +23,7 @@ public interface ILogService<T> {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public T findByKey(T entity) throws DataAccessException;
+	public T loadByKey(T entity) throws DataAccessException;
 
 	/**
 	 * 持久化Entity

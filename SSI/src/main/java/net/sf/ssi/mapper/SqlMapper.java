@@ -32,7 +32,7 @@ public interface SqlMapper<T> {
 	/**
 	 * 根据主键获取实体信息
 	 */
-	public T findByKey(T entity) throws DataAccessException;
+	public T loadByKey(T entity) throws DataAccessException;
 	/**
 	 * 获取全部实体
 	 */
