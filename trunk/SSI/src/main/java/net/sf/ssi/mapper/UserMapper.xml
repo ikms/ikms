@@ -41,7 +41,7 @@
 		]]>
 	</delete>
 	
-	<select id="findByKey" parameterType="UserPOJO" resultMap="userResultMap">
+	<select id="loadByKey" parameterType="UserPOJO" resultMap="userResultMap">
 		<![CDATA[
             SELECT USER_ID,USER_ACCOUNT,USER_NAME,USER_PASSWORD,NICK_NAME,USER_SOURCE,CREATE_DATE 
             	 FROM T_IKMS_USER 

@@ -37,7 +37,7 @@ public class UserController {
 	public String getInfo3(@PathVariable String userId, Model model){
 		User arguser = new User();
 		arguser.setUserId(userId);
-		User user = userService.findByKey(arguser);
+		User user = userService.loadByKey(arguser);
 		logger.info(userId);
 		model.addAttribute("user",user);
 		return "userInfofromdb";

@@ -47,7 +47,7 @@
 		]]>
 	</delete>
 	
-	<select id="findByKey" parameterType="LogPOJO" resultMap="logResultMap">
+	<select id="loadByKey" parameterType="LogPOJO" resultMap="logResultMap">
 		<![CDATA[
             SELECT LOG_ID,LOG_TITLE,A.ACCOUNT_NUM,A.ACCOUNT_NAME,LOG_CONTENT,CREATE_TIME,LASTEDIT_DATE  
             	 FROM T_IKMS_LOG 
