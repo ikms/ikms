@@ -19,11 +19,14 @@
 	<!-- holding properties for database connectivity /-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
         
-    <!-- 注解探测器 -->
+    <!-- 注解探测器 Scans the classpath of this application for @Components to deploy as beans  -->
 	<context:component-scan base-package="net.sf.ssi" />
-	
+	<!-- 将隐式地向 Spring 容器注册 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、
+	PersistenceAnnotationBeanPostProcessor 以及 equiredAnnotationBeanPostProcessor 这 4 个 BeanPostProcessor -->
 	<context:annotation-config/>
-		
+	<!-- Configures the @Controller programming model  -->
+	<mvc:annotation-driven/>
+	<!-- 针对的是事务的注解配置 -->
 	<tx:annotation-driven/>
 	
 	<!-- annotation默认的方法映射适配器 -->
