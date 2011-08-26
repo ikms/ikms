@@ -17,13 +17,31 @@ import java.util.UUID;
  */
 public class CommonUtils {
 	/**
-	 * 生成标准的GUID字符串。
+	 * 生成标准的36位GUID字符串。
 	 * @return 生成的惟一的标识字符串
 	 * @since jdk 1.5
 	 */
 	public static String getGUID() {
 		UUID uid = UUID.randomUUID();
 		return uid.toString();
+	}
+	/**
+	 * 生成大写字母的36位GUID字符串。
+	 * @return 生成的惟一的标识字符串
+	 * @since jdk 1.5
+	 */
+	public static String getUpperCase36GUID() {
+		UUID uid = UUID.randomUUID();
+		return uid.toString().toUpperCase();
+	}
+	/**
+	 * 生成大写字母的32位GUID字符串。
+	 * @return 生成的惟一的标识字符串
+	 * @since jdk 1.5
+	 */
+	public static String getUpperCase32GUID() {
+		UUID uid = UUID.randomUUID();
+		return uid.toString().replace("-", "").toUpperCase();
 	}
 	/**
      * 人民币转化成大写
