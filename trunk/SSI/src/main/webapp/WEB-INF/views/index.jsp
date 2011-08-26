@@ -52,6 +52,7 @@ function browser(){
 			<h3>demo List</h3>
 			<ul>
 				<li><a href="${httpBase}showcase.html">ikms-showcase</a></li>
+				<li><a href="${httpBase}tools.html">日常工具全集</a></li>
 				<li><a href="${httpBase}logManage.html">日志管理系统</a></li>
 				<li><a href="${httpBase}bugTrack.html">Bug跟踪系统</a></li>
 				<li><a href="${httpBase}blog.html">博客管理系统</a></li>
