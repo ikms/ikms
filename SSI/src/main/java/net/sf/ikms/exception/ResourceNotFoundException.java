@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
+ * 资源没有找到异常处理
  * 
  * @author zhangyj
  * @version 0.1, 2011-7-21 上午09:47:57
