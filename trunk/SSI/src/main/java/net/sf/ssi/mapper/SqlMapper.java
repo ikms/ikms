@@ -1,6 +1,8 @@
-/**
- * 
+/*
+ * @(#)SqlMapper.java
+ * Copyright (C) 2003-2011 ikms.sourceforge.net All rights reserved
  */
+
 package net.sf.ssi.mapper;
 
 import java.util.List;
