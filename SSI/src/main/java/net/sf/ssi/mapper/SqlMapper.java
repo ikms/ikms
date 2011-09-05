@@ -10,10 +10,11 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 
 /**
+ * SqlMapper接口基础公共类
  * 
  * @author zhangyj
  * @version 1.0
- * @date 2011-5-25 上午10:06:09
+ * @date 2011-5-25 
  * @param <T>
  *
  */

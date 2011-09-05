@@ -6,10 +6,10 @@
 package net.sf.ssi.mapper;
 
 /**
- * 
+ * 用户帐户Mapper
  * @author zhangyj
  * @version 1.0
- * @date 2011-6-21 下午01:39:08
+ * @date 2011-6-21
  * @param <T>
  *
  */

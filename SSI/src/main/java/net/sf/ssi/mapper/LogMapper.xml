@@ -10,7 +10,7 @@
 		<result property="logContent" column="log_content" jdbcType="VARCHAR" />
 		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
 		<result property="lastEditDate" column="lastedit_date" jdbcType="TIMESTAMP"/>
-		<association property="account" column="account_num" javaType="AccountPOJO" select="net.sf.ssi.mapper.AccountMapper.findByKey"/>
+		<association property="account" column="account_num" javaType="AccountPOJO" select="net.sf.ssi.mapper.AccountMapper.loadByKey"/>
 	</resultMap>
 	
 	<insert id="add" parameterType="LogPOJO">

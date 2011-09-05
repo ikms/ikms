@@ -5,12 +5,11 @@
 
 package net.sf.ssi.mapper;
 
-
 /**
- * 
+ * 用户Mapper
  * @author zhangyj
  * @version 1.0
- * @date 2011-5-25 上午10:06:54
+ * @date 2011-5-25
  * @param <T>
  * 
  */
