@@ -107,6 +107,41 @@ form.inline p {margin-bottom:0;}
 .pageheader{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#fff6bf;color:#514721;border-color:#ffd324;}
 .pageleft{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#e6efc2;color:#264409;border-color:#c6d880;}
 .pagecontent{padding:0.8em;margin-bottom:1em;border:1px solid #ddd;background:#d5edf8;color:#205791;border-color:#92cae4;}
+/*Google 首页按钮css样式*/
+.btn_gl{
+	background-image:-ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5',EndColorStr='#f1f1f1');
+	background-color:#f5f5f5;
+	background-image:linear-gradient(top,#f5f5f5,#f1f1f1);
+	background-image:-o-linear-gradient(top,#f5f5f5,#f1f1f1);
+	border:1px solid #dcdcdc;
+	border:1px solid rgba(0, 0, 0, 0.1);
+	border-radius:2px;color:#666;
+	cursor:pointer;
+	font-size:12px;
+	font-weight:bold;
+	font-family:微软雅黑;
+	height:29px;
+	line-height:27px;
+	/*margin:11px 6px;*/
+	min-width:54px;
+	padding:0 8px;
+	text-align:center;
+}
+.btn_gl:hover{
+	background-image:-ms-linear-gradient(top,#f8f8f8,#f1f1f1);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#f8f8f8',EndColorStr='#f1f1f1');
+	background-color:#f8f8f8;
+	background-image:linear-gradient(top,#f8f8f8,#f1f1f1);
+	background-image:-o-linear-gradient(top,#f8f8f8,#f1f1f1);
+	border:1px solid #c6c6c6;
+	box-shadow:0 1px 1px rgba(0,0,0,0.1);
+	color:#333;
+}
+.btn_gl:focus{
+	border:1px solid #4d90fe;
+	outline:none;
+}
 
 /* grid.css */
 .container {width:950px;margin:0 auto;}

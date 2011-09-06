@@ -18,7 +18,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
-	$("#id_addLog").css("display","none");
+	//$("#id_addLog").css("display","none");
 });
 //将一个表单的数据返回成JSON对象  
 $.fn.serializeObject = function() {
@@ -96,26 +96,6 @@ function save() {
 					</tr>
 				</table>
 			</form>
-		</div>
-	</div>
-	<div class="column span-24">
-		<div class="pageheader">
-			分页：
-		</div>
-	</div>
-	<%
-		for(int i=1;i<=15;i++){
-	%>
-	<div class="column span-24">
-		<div class="pagecontent" style="height: 40px;">
-			<div class="span-3"><div class="pageheader">2011-07-<%=i %></div></div>
-			<div class="span-20"><div class="pageleft">今天的主要工作是我也不知道做了些什么事情</div></div>
-		</div>
-	</div>
-	<%} %>
-	<div class="column span-24">
-		<div class="pageheader">
-			分页：
 		</div>
 	</div>
 	<div class="column span-24">
