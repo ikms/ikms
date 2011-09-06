@@ -18,7 +18,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
-	//$("#id_addLog").css("display","none");
 });
 //将一个表单的数据返回成JSON对象  
 $.fn.serializeObject = function() {
@@ -36,29 +35,28 @@ $.fn.serializeObject = function() {
 	});
 	return o;
 };
-
-function Opera() {
-	cssDisplay("id_addLog");
-}
-function save() {
-	//alert("${httpBase}log/add.html");
-	//alert($("#id_addLogFrm").serializeObject().toString());
-	//$.ajax({
-	//	type : "post",
-		//contentType : "application/json",
-	//	data : $("#id_addLogFrm").serializeObject(),
-		//dataType : "json",
-	//	url : "${httpBase}log/add.html",
-	//	success : function(data) {
-	//		window.location.href="${httpBase}log/query.html";
-	//	},
-	//	error : function(data) {
-
-	//	}
-	//});
-	//$("#id_addLogFrm").serializeObject();
-	//$("#id_addLogFrm").action="${httpBase}log/add.html";
-	$("#id_addLogFrm").submit();
+function pageCheck(){
+	var checkInfo = "";
+	var id_createDate = $("#id_createDate").val();
+	var id_logTitle = $("#id_logTitle").val();
+	var id_logContent = $("#id_logContent").val();
+	checkInfo = "<ul>";
+	if(id_createDate==''){
+		checkInfo = checkInfo + "<li>日期不能为空！</li>"; 
+	}
+	if(id_logTitle==''){
+		checkInfo = checkInfo + "<li>主题不能为空！</li>"; 
+	}
+	if(id_logContent==''){
+		checkInfo = checkInfo + "<li>内容不能为空！</li>"; 
+	}
+	checkInfo = checkInfo +"</ul>";
+	if(checkInfo!='<ul></ul>'){
+		$("#checkInfo").html(checkInfo);
+		$("#checkInfo").css("display","");
+		return false;
+	}
+	return true;
 }
 </script>
 </head>
@@ -66,13 +64,13 @@ function save() {
 <div class="container">
 	<div class="column span-24">
 		<div class="pageheader"  style="height: 90px;">
-			<h1>ikms Logo</h1>
+			<h1><span onclick="toURI('${base}')">ikms Logo</span></h1>
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
 	<div class="column span-24">
 		<div class="pagecontent">
-			<a href="javascript:Opera()">添加日志</a>
+			<div class="error" style="display: none;" id="checkInfo"></div>
 			<form id="id_addLogFrm" method="POST" action="${httpBase}log/add.html">
 				<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
 					<tr>
@@ -88,10 +86,9 @@ function save() {
 						<td><textarea name="logContent" id="id_logContent" rows="5" cols="20" class="span-16"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="2">
-							<button id="id_submit" type="button" class="button positive" onclick="save();">
-								<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 保   存
-							</button>
+						<td></td>
+						<td>
+							<input type="submit" class="btn_gl" id="id_submit" name="save" value="保 存" onclick="return pageCheck();"/>
 						</td>
 					</tr>
 				</table>

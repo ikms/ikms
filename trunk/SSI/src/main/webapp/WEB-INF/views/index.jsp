@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
+<script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
@@ -38,12 +39,20 @@ function browser(){
 	return bInfo;
 }
 </script>
+<style type="text/css">
+.errormsg {
+    color: #DD4B39;
+    display: block;
+    line-height: 17px;
+    margin: 0.5em 0 0;
+}
+</style>
 </head>
 <body>
 <div class="container">
 	<div class="column span-24">
 		<div class="pageheader"  style="height: 90px;">
-			<h1>ikms Logo</h1>
+			<h1><span onclick="toURI('${base}')">ikms Logo</span></h1>
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
@@ -66,18 +75,16 @@ function browser(){
 			<p>
               <label for="id_accountName">帐号:</label><br>
               <input type="text" class="title" name="accountName" id="id_accountName" value="">
+              <span class="errormsg"></span>
             </p>
 			<p>
               <label for="id_accountPassword">密码:</label><br>
               <input type="password" class="title" name="accountPassword" id="id_accountPassword" value="">
+              <span class="errormsg"></span>
             </p>
             <p align="right">
-              <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
-				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 登  录
-			  </button>
-              <button id="id_submit" type="submit" class="button positive" onclick="return checkpage();">
-				<img src="${base}/resources/css/buttons/icons/tick.png" alt=""/> 注  册
-			  </button>
+			  <input type="submit" class="g-button g-button-submit" value="登录" onclick="return checkpage();"/>
+			  <input type="submit" class="g-button g-button-submit" value="注册" onclick="return checkpage();"/>
             </p>
 		</div>
 	</div>

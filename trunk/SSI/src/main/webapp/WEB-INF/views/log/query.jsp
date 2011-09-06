@@ -40,7 +40,7 @@ ul {border: 0;margin: 0;padding: 0;}
 <div class="container">
 	<div class="column span-24">
 		<div class="pageheader"  style="height: 90px;">
-			<h1>ikms Logo</h1>
+			<h1><span onclick="toURI('${base}')">ikms Logo</span></h1>
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
@@ -59,6 +59,7 @@ ul {border: 0;margin: 0;padding: 0;}
 				<tr height="35px;">
 					<th>日期</th>
 					<th>日志标题</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -82,6 +83,7 @@ ul {border: 0;margin: 0;padding: 0;}
 			<tr height="32px;">
 				<td width="20%"><fmt:formatDate value="${log.createTime}" pattern="yyyy-MM-dd"/></td>
 				<td><c:out value="${log.logTitle}" escapeXml="false"/></td>
+				<td width="15%"><a href="#">view</a> <a href="#">edit</a> <a href="#">delete</a></td>
 			</tr>
 			</c:forEach>
 		</table>
