@@ -21,6 +21,9 @@
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
 });
+function toAddPage(){
+	window.location.href="${base}/log/toAdd.html";
+}
 </script>
 <style type="text/css">
 ul {border: 0;margin: 0;padding: 0;}
@@ -42,6 +45,15 @@ ul {border: 0;margin: 0;padding: 0;}
 		</div>
 	</div>
 	<div class="column span-24">
+		<table>
+			<thead>
+				<tr>
+					<th>
+					<input type="button" class="btn_gl" value="添加日志" onclick="toAddPage();"/> 
+					</th>
+				</tr>
+			<thead>
+		</table>
 		<table>
 			<thead>
 				<tr height="35px;">

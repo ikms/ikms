@@ -56,6 +56,11 @@ public class LogController {
 		return "redirect:/log/query.html";
 		
 	}
+	
+	@RequestMapping(value="/toAdd")
+	public String toAdd(Model model){
+		return "log/addLog";
+	}
 
 	@RequestMapping(value = "/query")
 	public String query( Model model) {
