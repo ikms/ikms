@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
+<script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
 <script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -24,7 +25,7 @@ $(document).ready(function(){
 <div class="container">
 	<div class="column span-24">
 		<div class="pageheader"  style="height: 90px;">
-			<h1>ikms Logo</h1>
+			<h1><span onclick="toURI('${base}')">ikms Logo</span></h1>
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>

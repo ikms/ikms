@@ -12,3 +12,6 @@ function cssDisplay(Id) {
 		typeId.css("display", "block");
 	}
 };
+function toURI(uri){
+	window.location.href=uri;
+};
