@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,5 +68,21 @@ public class LogController {
 		List<Log> logs = logService.find(null);
 		model.addAttribute("logs", logs);
 		return "log/query";
+	}
+	@RequestMapping(value="/toView/{Id}")
+	public String toView(@PathVariable("Id") String Id,Model model){
+		Log log = new Log();
+		log.setLogId(Id);
+		log = logService.loadByKey(log);
+		model.addAttribute("log",log);
+		return "log/toView";
+	}
+	@RequestMapping(value="/toEdit/{Id}")
+	public String toEdit(@PathVariable("Id") String Id){
+		return "";
+	}
+	@RequestMapping(value="/toDelete/{Id}")
+	public String toDelete(@PathVariable("Id") String Id){
+		return "";
 	}
 }

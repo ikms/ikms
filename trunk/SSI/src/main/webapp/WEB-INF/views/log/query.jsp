@@ -21,9 +21,6 @@
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
 });
-function toAddPage(){
-	window.location.href="${base}/log/toAdd.html";
-}
 </script>
 <style type="text/css">
 ul {border: 0;margin: 0;padding: 0;}
@@ -34,6 +31,7 @@ ul {border: 0;margin: 0;padding: 0;}
 #pagination-flickr .active {color: #ff0084;	font-weight: bold;display: block;float: left;padding: 4px 6px;}
 #pagination-flickr a:link,#pagination-flickr a:visited {color: #0063e3;display: block;float: left;padding: 3px 6px;text-decoration: none;}
 #pagination-flickr a:hover {border: solid 1px #666666;}
+.span-back{float: right;}
 </style>
 </head>
 <body>
@@ -49,7 +47,8 @@ ul {border: 0;margin: 0;padding: 0;}
 			<thead>
 				<tr>
 					<th>
-					<input type="button" class="btn_gl" value="添加日志" onclick="toAddPage();"/> 
+					<input type="button" class="btn_gl" value="添加日志" onclick="toMethod('${base}','log','toAdd');"/>
+					<a class="span-back">返回</a> 
 					</th>
 				</tr>
 			<thead>
@@ -83,7 +82,11 @@ ul {border: 0;margin: 0;padding: 0;}
 			<tr height="32px;">
 				<td width="20%"><fmt:formatDate value="${log.createTime}" pattern="yyyy-MM-dd"/></td>
 				<td><c:out value="${log.logTitle}" escapeXml="false"/></td>
-				<td width="15%"><a href="#">view</a> <a href="#">edit</a> <a href="#">delete</a></td>
+				<td width="15%">
+					<a href="toView/${log.logId}.html">view</a> 
+					<a href="toEdit/${log.logId}.html">edit</a> 
+					<a href="toDelete/${log.logId}.html">delete</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</table>
