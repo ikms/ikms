@@ -144,7 +144,7 @@ form.inline p {margin-bottom:0;}
 	outline:none;
 }
 /*首页登录按钮css样式*/
-.column input[type="submit"] {font-size: 13px;height: 32px;margin: 0 1.5em 1.2em 0;}
+.column input[type="submit"][type="button"] {font-size: 13px;height: 32px;margin: 0 1.5em 1.2em 0;}
 button.g-button, input.g-button[type="submit"] {height: 29px;line-height: 29px;min-width:70px;cursor:pointer;letter-spacing:5px;font-weight:bold;}
 .g-button:hover {
     -moz-transition: all 0s ease 0s;

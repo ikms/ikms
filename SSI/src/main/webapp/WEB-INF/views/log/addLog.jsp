@@ -88,6 +88,7 @@ function pageCheck(){
 					<tr>
 						<td></td>
 						<td>
+							<input type="button" class="btn_gl" id="id_submit" name="save" value="返 回" onclick="toURI('${base}')"/>
 							<input type="submit" class="btn_gl" id="id_submit" name="save" value="保 存" onclick="return pageCheck();"/>
 						</td>
 					</tr>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Common.jsp"%>
+<%@ include file="../Common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>日常工具全集</title>
+<title>日志管理</title>
 <link rel="stylesheet" href="${base}/resources/css/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="${base}/resources/css/print.css" type="text/css" media="print"/>
 <!--[if lt IE 8]>
@@ -14,19 +14,12 @@
 <link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
 <script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
 <script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
+<script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
 });
 </script>
-<style type="text/css">
-.errormsg {
-    color: #DD4B39;
-    display: block;
-    line-height: 17px;
-    margin: 0.5em 0 0;
-}
-</style>
 </head>
 <body>
 <div class="container">
@@ -37,17 +30,23 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="column span-24">
-		<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td>个人所得税</td>
-			</tr>
-			<tr>
-				<td>主题：</td>
-			</tr>
-			<tr>
-				<td>内容：</td>
-			</tr>
-		</table>
+		<div class="pagecontent">
+			<div class="error" style="display: none;" id="checkInfo"></div>
+				<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="10%">日期：</td>
+						<td><fmt:formatDate value="${log.createTime}" pattern="yyyy-MM-dd"/></td>
+					</tr>
+					<tr>
+						<td>主题：</td>
+						<td>${log.logTitle}</td>
+					</tr>
+					<tr>
+						<td>内容：</td>
+						<td>${log.logContent}</td>
+					</tr>
+				</table>
+		</div>
 	</div>
 	<div class="column span-24">
 		<div class="pageheader">
@@ -61,6 +60,5 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-</body>
 </body>
 </html>
