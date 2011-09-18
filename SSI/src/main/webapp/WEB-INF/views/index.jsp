@@ -56,36 +56,31 @@ function browser(){
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
-	<div class="column span-15">
-		<div class="pageleft" style="height: 400px;">
-			<h3>demo List</h3>
-			<ul>
-				<li><a href="${httpBase}showcase.html">ikms-showcase</a></li>
-				<li><a href="${httpBase}tools.html">日常工具全集</a></li>
-				<li><a href="${httpBase}logManage.html">日志管理系统</a></li>
-				<li><a href="${httpBase}bugTrack.html">Bug跟踪系统</a></li>
-				<li><a href="${httpBase}blog.html">博客管理系统</a></li>
-				<li><a href="${httpBase}finance.html">财务管理系统</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="column span-9 last">
-		<div class="pagecontent" style="height: 400px;">
-			<h3>用户登录</h3>
-			<p>
-              <label for="id_accountName">帐号:</label><br>
-              <input type="text" class="title" name="accountName" id="id_accountName" value="">
-              <span class="errormsg"></span>
-            </p>
-			<p>
-              <label for="id_accountPassword">密码:</label><br>
-              <input type="password" class="title" name="accountPassword" id="id_accountPassword" value="">
-              <span class="errormsg"></span>
-            </p>
-            <p align="right">
-			  <input type="submit" class="g-button g-button-submit" value="登录" onclick="return checkpage();"/>
-			  <input type="submit" class="g-button g-button-submit" value="注册" onclick="return checkpage();"/>
-            </p>
+	<div class="column span-24">
+		<div class="pagecontent">
+			<div class="error" style="display: none;" id="checkInfo"></div>
+			<form id="id_addLogFrm" method="POST" action="${httpBase}log/add.html">
+				<table id="id_addLog" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>日期：</td>
+						<td><input type="text" class="title Wdate" name="createDate" id="id_createDate" value="" onfocus="WdatePicker()"/></td>
+					</tr>
+					<tr>
+						<td>主题：</td>
+						<td><input type="text" class="title span-16" name="logTitle" id="id_logTitle" value=""></td>
+					</tr>
+					<tr>
+						<td>内容：</td>
+						<td><textarea name="logContent" id="id_logContent" rows="5" cols="20" class="span-16"></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="submit" class="btn_gl" id="id_submit" name="save" value="保 存" onclick="return pageCheck();"/>
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	<div class="column span-24">
