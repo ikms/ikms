@@ -5,16 +5,13 @@
 package net.sf.ssi.controller;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import net.sf.ikms.util.CommonUtils;
 import net.sf.ikms.util.date.DateConst;
 import net.sf.ikms.util.date.DateUtils;
 import net.sf.ssi.domain.Account;
 import net.sf.ssi.domain.Log;
 import net.sf.ssi.service.ILogService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -39,8 +36,8 @@ public class LogController {
 	@Inject
 	public ILogService<Log> logService;
 
-	@RequestMapping(value = "/add",method=RequestMethod.POST)
-//	@ResponseBody
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	//	@ResponseBody
 	public String add(@RequestParam String createDate, @RequestParam String logTitle, @RequestParam String logContent) {
 		Account account = new Account();
 		account.setAccountNum(1);
@@ -53,36 +50,36 @@ public class LogController {
 		logService.save(log);
 		//		model.addAttribute("title","添加日志信息");
 		logger.info("LogController.add()");
-//		return "redirect:log/query.html";
+		//		return "redirect:log/query.html";
 		return "redirect:/log/query.html";
-		
+
 	}
-	
-	@RequestMapping(value="/toAdd")
-	public String toAdd(Model model){
+
+	@RequestMapping(value = "/toAdd")
+	public String toAdd(Model model) {
 		return "log/addLog";
 	}
 
 	@RequestMapping(value = "/query")
-	public String query( Model model) {
+	public String query(Model model) {
 		List<Log> logs = logService.find(null);
 		model.addAttribute("logs", logs);
 		return "log/query";
 	}
-	@RequestMapping(value="/toView/{Id}")
-	public String toView(@PathVariable("Id") String Id,Model model){
+	@RequestMapping(value = "/toView/{Id}", method = RequestMethod.GET)
+	public String toView(@PathVariable("Id") String Id, Model model) {
 		Log log = new Log();
 		log.setLogId(Id);
 		log = logService.loadByKey(log);
-		model.addAttribute("log",log);
+		model.addAttribute("log", log);
 		return "log/toView";
 	}
-	@RequestMapping(value="/toEdit/{Id}")
-	public String toEdit(@PathVariable("Id") String Id){
+	@RequestMapping(value = "/toEdit/{Id}", method = RequestMethod.GET)
+	public String toEdit(@PathVariable("Id") String Id, Model model) {
 		return "";
 	}
-	@RequestMapping(value="/toDelete/{Id}")
-	public String toDelete(@PathVariable("Id") String Id){
+	@RequestMapping(value = "/toDelete/{Id}")
+	public String toDelete(@PathVariable("Id") String Id) {
 		return "";
 	}
 }
