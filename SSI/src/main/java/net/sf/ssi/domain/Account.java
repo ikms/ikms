@@ -20,7 +20,7 @@ public class Account implements Serializable {
 
 	private static final long serialVersionUID = -5365857692691004394L;
 
-	private int accountNum;			// 用户数字帐号,唯一
+	private Long accountNum;			// 用户数字帐号,唯一
 	private String accountId;		// 用户帐户,唯一
 	private String accountName;		// 用户昵称,唯一
 	private String accountPassword;	// 帐户密码
@@ -31,13 +31,13 @@ public class Account implements Serializable {
 	/**
 	 * @return the accountNum
 	 */
-	public int getAccountNum() {
+	public Long getAccountNum() {
 		return accountNum;
 	}
 	/**
 	 * @param accountNum the accountNum to set
 	 */
-	public void setAccountNum(int accountNum) {
+	public void setAccountNum(Long accountNum) {
 		this.accountNum = accountNum;
 	}
 	/**

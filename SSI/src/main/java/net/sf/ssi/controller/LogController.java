@@ -40,7 +40,7 @@ public class LogController {
 	//	@ResponseBody
 	public String add(@RequestParam String createDate, @RequestParam String logTitle, @RequestParam String logContent) {
 		Account account = new Account();
-		account.setAccountNum(1);
+		account.setAccountNum(1l);
 		Log log = new Log();
 		log.setLogId(CommonUtils.getGUID());
 		log.setCreateTime(DateUtils.convertStringToDate(createDate, DateConst.standard_simple_format));
