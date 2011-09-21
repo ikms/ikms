@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Common.jsp"%>
+<%@ include file="taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -21,7 +21,7 @@
 			<td>${user.userName }</td>
 			<td>${user.userPassword }</td>
 			<td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-			<td><a href="${base}/usercenter/getInfo3/${user.userId}.html">View</a></td>
+			<td><a href="${ctx}/usercenter/getInfo3/${user.userId}.html">View</a></td>
 		</tr>
 		</c:forEach>
 	</table>
