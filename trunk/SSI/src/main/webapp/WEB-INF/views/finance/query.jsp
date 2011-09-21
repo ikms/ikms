@@ -1,22 +1,22 @@
 <%@page import="net.sf.ssi.domain.Log"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../Common.jsp"%>
+<%@ include file="../taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>日志管理</title>
-<link rel="stylesheet" href="${base}/resources/css/screen.css" type="text/css" media="screen, projection"/>
-<link rel="stylesheet" href="${base}/resources/css/print.css" type="text/css" media="print"/>
+<link rel="stylesheet" href="${ctx}/resources/css/screen.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="${ctx}/resources/css/print.css" type="text/css" media="print"/>
 <!--[if lt IE 8]>
-<link rel="stylesheet" href="${base}/resources/css/ie.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="${ctx}/resources/css/ie.css" type="text/css" media="screen, projection"/>
 <![endif]-->
-<link rel="stylesheet" href="${base}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
-<link rel="stylesheet" href="${base}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
-<script type="text/javascript" src="${base}/resources/script/jquery-min.js"></script>
-<script type="text/javascript" src="${base}/resources/script/ssi.js"></script>
-<script language="javascript" type="text/javascript" src="${base}/resources/script/my97/WdatePicker.js"></script>
+<link rel="stylesheet" href="${ctx}/resources/css/link-icons/screen.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="${ctx}/resources/css/buttons/screen.css" type="text/css" media="screen, projection"/>
+<script type="text/javascript" src="${ctx}/resources/script/jquery-min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/script/ssi.js"></script>
+<script language="javascript" type="text/javascript" src="${ctx}/resources/script/my97/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#browserFull").html(navigator.userAgent);
@@ -38,7 +38,7 @@ ul {border: 0;margin: 0;padding: 0;}
 <div class="container">
 	<div class="column span-24">
 		<div class="pageheader"  style="height: 90px;">
-			<h1><span onclick="toURI('${base}')">ikms Logo</span></h1>
+			<h1><span onclick="toURI('${ctx}')">ikms Logo</span></h1>
 			<h6>My Knowledge Management System &#169;version 1.0</h6>
 		</div>
 	</div>
@@ -47,7 +47,7 @@ ul {border: 0;margin: 0;padding: 0;}
 			<thead>
 				<tr>
 					<th>
-					<input type="button" class="btn_gl" value="添加日志" onclick="toMethod('${base}','log','toAdd');"/>
+					<input type="button" class="btn_gl" value="添加日志" onclick="toMethod('${ctx}','log','toAdd');"/>
 					<a class="span-back">返回</a> 
 					</th>
 				</tr>
