@@ -4,14 +4,18 @@
  */
 package net.sourceforge.ikms.util.file;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
@@ -171,7 +175,7 @@ public class FileUtils {
      * @param srFilePath
      *            源位置
      * @param dtFilePath
-     *            目标位置
+     *            目标位置(绝对路径带文件名)
      * @version 1.0,2010/01/05
      */
     public static void copyFile(String srFilePath, String dtFilePath) {
@@ -198,14 +202,14 @@ public class FileUtils {
     /**
      * 删除单个文件
      * 
-     * @param sPath
-     *            被删除文件的文件名
+     * @param filePathAndName
+     *            被删除文件的完整绝对路径及文件名
      * @return 单个文件删除成功返回true,否则返回false
      * @version 1.0 , 2009/12/21 新增
      */
-    public static boolean deleteFile(String sPath) {
+    public static boolean deleteFile(String filePathAndName) {
         boolean flag = false;
-        java.io.File file = new File(sPath);
+        java.io.File file = new File(filePathAndName);
         // 路径为文件且不为空则进行删除
         if (file.isFile() && file.exists()) {
             file.delete();
@@ -216,16 +220,16 @@ public class FileUtils {
     /**
      * 删除目录（文件夹）以及目录下的文件
      * 
-     * @param sPath
+     * @param filePath
      *            被删除目录的文件路径
      * @return 目录删除成功返回true，否则返回false
      */
-    public static boolean deleteDirectory(String sPath) {
+    public static boolean deleteDirectory(String filePath) {
         // 如果sPath不以文件分隔符结尾，自动添加文件分隔符
-        if (!sPath.endsWith(File.separator)) {
-            sPath = sPath + File.separator;
+        if (!filePath.endsWith(File.separator)) {
+        	filePath = filePath + File.separator;
         }
-        File dirFile = new File(sPath);
+        File dirFile = new File(filePath);
         // 如果dir对应的文件不存在，或者不是一个目录，则退出
         if (!dirFile.exists() || !dirFile.isDirectory()) {
             return false;
@@ -298,22 +302,22 @@ public class FileUtils {
     /**
      * 根据路径删除指定的目录或文件，无论存在与否
      * 
-     * @param sPath
+     * @param folderPath
      *            要删除的目录或文件
      * @return 删除成功返回 true，否则返回 false。
      */
-    public static boolean DeleteFolder(String sPath) {
+    public static boolean DeleteFolder(String folderPath) {
         boolean flag = false;
-        File file = new File(sPath);
+        File file = new File(folderPath);
         // 判断目录或文件是否存在
         if (!file.exists()) { // 不存在返回 false
             return flag;
         } else {
             // 判断是否为文件
             if (file.isFile()) { // 为文件时调用删除文件方法
-                return deleteFile(sPath);
+                return deleteFile(folderPath);
             } else { // 为目录时调用删除目录方法
-                return deleteDirectory(sPath);
+                return deleteDirectory(folderPath);
             }
         }
     }
@@ -337,23 +341,30 @@ public class FileUtils {
     }
     /**
      * 判断文件是否存在
-     * 
+     * @param filePath
+     * 			文件完整路径
+     * @return
      */
-    public static boolean isFileExists(){
-    	return false;
+    public static boolean isFileExists(String filePath){
+    	java.io.File myFile = new java.io.File(filePath);
+        if(myFile.exists()){
+            return true;
+        }else{
+            return false;
+        }
     }
     /**
      * 根据文件地址以文件流的形式读取文件，并将文件流转换为byte[]输出。
      * 
-     * @param sPath
+     * @param filePath
      *            文件的绝对路径
      * @return byte[]
      * @version 1.0 , 2009/12/21 新增
      */
-    public static byte[] readInputStream(String sPath) {
+    public static byte[] readInputStream(String filePath) {
         try {
             int readSize;
-            File file = new File(sPath);
+            File file = new File(filePath);
             // 判断是否为文件且不为空则进行文件的读取
             if (file.isFile() && file.exists()) {
                 InputStream in = new FileInputStream(file);
@@ -407,5 +418,108 @@ public class FileUtils {
         }
         return point;
     }
+	/**
+	 * 读取文本文件内容
+	 * 
+	 * @param filePathAndName
+	 *            带有完整绝对路径的文件名
+	 * @param encoding
+	 *            文本文件打开的编码方式
+	 * @return 返回文本文件的内容
+	 */
+	public static String readTxt(String filePathAndName, String encoding) throws IOException {
+		encoding = encoding.trim();
+		StringBuffer str = new StringBuffer("");
+		String st = "";
+		try {
+			FileInputStream fs = new FileInputStream(filePathAndName);
+			InputStreamReader isr;
+			if (encoding.equals("")) {
+				isr = new InputStreamReader(fs);
+			} else {
+				isr = new InputStreamReader(fs, encoding);
+			}
+			BufferedReader br = new BufferedReader(isr);
+			try {
+				String data = "";
+				while ((data = br.readLine()) != null) {
+					str.append(data + " ");
+				}
+			} catch (Exception e) {
+				str.append(e.toString());
+			}
+			st = str.toString();
+		} catch (IOException es) {
+			st = "";
+		}
+		return st;
+	}
+	/**
+     * 新建文件
+     * 
+     * @param filePathAndName
+     *            文本文件完整绝对路径及文件名
+     * @param fileContent
+     *            文本文件内容
+     * @return
+     */
+    public static void createFile(String filePathAndName, String fileContent) {
 
+        try {
+            String filePath = filePathAndName;
+            filePath = filePath.toString();
+            File myFilePath = new File(filePath);
+            if (!myFilePath.exists()) {
+                myFilePath.createNewFile();
+            }
+            FileWriter resultFile = new FileWriter(myFilePath);
+            PrintWriter myFile = new PrintWriter(resultFile);
+            String strContent = fileContent;
+            myFile.println(strContent);
+            myFile.close();
+            resultFile.close();
+        } catch (Exception e) {
+            System.out.println("创建文件操作出错。FileUtils.createFile("+filePathAndName+","+fileContent+")");
+        }
+    }
+	/**
+	 * 有编码方式的文件创建
+	 * 
+	 * @param filePathAndName
+	 *            文本文件完整绝对路径及文件名
+	 * @param fileContent
+	 *            文本文件内容
+	 * @param encoding
+	 *            编码方式 例如 GBK 或者 UTF-8
+	 * @return
+	 */
+	public static void createFile(String filePathAndName, String fileContent, String encoding) {
+		try {
+			String filePath = filePathAndName;
+			filePath = filePath.toString();
+			File myFilePath = new File(filePath);
+			if (!myFilePath.exists()) {
+				myFilePath.createNewFile();
+			}
+			PrintWriter myFile = new PrintWriter(myFilePath, encoding);
+			String strContent = fileContent;
+			myFile.println(strContent);
+			myFile.close();
+		} catch (Exception e) {
+			System.out.println("创建文件操作出错。FileUtils.createFile("+filePathAndName+","+fileContent+","+encoding+")");
+		}
+	}
+	/**
+     * 移动文件
+     * 
+     * @param srFilePath
+     * 			文件源路径
+     * @param dtFilePath
+     * 			文件目标路径
+     * @return
+     */
+    public static void moveFile(String srFilePath, String dtFilePath) {
+        copyFile(srFilePath, dtFilePath);
+        deleteFile(srFilePath);
+    }
 }
