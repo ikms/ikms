@@ -22,6 +22,15 @@ import java.util.regex.Pattern;
  * 
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
+	
+	/**
+     * 字符数组转换为字符串
+     * @param bytes
+     * @return
+     */
+    public static String bytesToString(byte[] bytes){
+        return new String(bytes);
+    }
 
 	/**
 	 * StringUtils.isBlank为true则返回toStr。否则返回str
