@@ -6,8 +6,6 @@ package net.sourceforge.ikms.util.configuration;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
-import net.sourceforge.ikms.util.file.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
