@@ -170,7 +170,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * 将<b>java.util.Date类型时间</b> 根据 <b>格式化样式</b> 格式化为<b>字符串</b>,默认时区：简体中文
+	 * 将<b>java.util.Date类型时间</b> 根据 <b>格式化样式 即 pattern模式</b> 格式化为<b>字符串</b>,默认时区：简体中文
 	 * 
 	 * @param dateTime
 	 *            待格式化的java.uitl.Date类型时间
@@ -222,6 +222,7 @@ public class DateUtils {
 	 * @param pattern
 	 *            转换时格式化时间的模式
 	 * @return 格式化并转化为String类型的字符串
+	 * @deprecated 由{@link DateUtils#formatTypeString(Date, String)}代替
 	 * @version 1.0
 	 * @date 2010/01/26
 	 */
@@ -241,6 +242,7 @@ public class DateUtils {
 	 * @param pattern
 	 *            转换时格式化时间的模式
 	 * @return 格式化并转化为String类型的字符串
+	 * @deprecated 由{@link DateUtils#formatTypeString(Date, String, Locale)}代替
 	 * @version 1.0
 	 * @date 2010/01/26
 	 */
@@ -278,4 +280,23 @@ public class DateUtils {
 		Date dateTime = new Date();
 		return formatTypeString(dateTime, pattern, Locale.SIMPLIFIED_CHINESE);
 	}
+	/**
+	 * 比较两个时间字符串
+	 * @param oldTime
+	 *            字符串时间
+	 * @param nowTime
+	 *            字符串时间
+	 * @return 若oldTime早于nowTime则返回小于0的数;<br/>若oldTime晚于nowTime则返回大于0的数;<br/>如果相等则返回0.
+	 */
+    public static Integer compareTo(String oldTime, String nowTime) {
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date oldTime1 = formatter.parse(oldTime);
+            Date nowTime1 = formatter.parse(nowTime);
+            return oldTime1.compareTo(nowTime1);
+        } catch (ParseException e) {
+            logger.error(e.getMessage());
+            return null;
+        }
+    }
 }

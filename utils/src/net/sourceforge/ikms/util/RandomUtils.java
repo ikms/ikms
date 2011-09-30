@@ -21,6 +21,7 @@ public class RandomUtils {
 	private static final String src_upper = src_lower.toUpperCase();
 	private static final String src_hex_lower = "0123456789abcdef";
 	private static final String src_hex_upper = src_hex_lower.toUpperCase();
+	private static final String src_all = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private static final String esc_char = "?";
 
 	/**
@@ -205,7 +206,7 @@ public class RandomUtils {
 	 */
 	public static String getRandomString(int length) {
 		StringBuffer r = new StringBuffer(length);
-		String src = src_number + src_lower + src_upper;
+		String src = src_all;
 		for (int i = 0; i < length; i++) {
 			r.append(getRandomStr(src));
 		}
