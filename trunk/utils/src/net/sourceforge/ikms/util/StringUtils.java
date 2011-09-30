@@ -68,7 +68,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @return true 是数字，false 非数字
 	 * @version 1.0,2010/01/21
 	 */
-	public static boolean isNumber(String str) {
+	public static boolean isNumeric(String str) {
 		if (str.trim().equals(""))
 			return false;
 		Pattern pattern = Pattern.compile("[0-9]*");
@@ -169,7 +169,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		if (inputStr == null || inputStr.equals("")) {
 			return inputStr;
 		}
-
 		try {
 			byte[] bytes = inputStr.getBytes(sourceEncoding);
 			return new String(bytes, targetEncoding);
@@ -177,5 +176,25 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		}
 		return inputStr;
 	}
+	/**
+	 * 获取字符的子串，
+	 * @param string
+	 *            传入的字符串
+	 * @param beginIndex
+	 *            开始的位置，从0开始
+	 * @param length
+	 *            子串的长度
+	 * @return 字串
+	 */
+    public static String substring(String string, int beginIndex, int length) {
+        int strLength = string.length();
+        if (beginIndex >= strLength) {
+            return "";
+        }
+        if (beginIndex + length >= strLength) {
+            return string.substring(beginIndex);
+        }
+        return string.substring(beginIndex, beginIndex + length);
+    }
 
 }
