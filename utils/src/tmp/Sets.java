@@ -17,7 +17,6 @@ import java.util.TreeSet;
 public class Sets {
 
     /** 求并集 */
-    @SuppressWarnings("unchecked")
     public static <T> Set<T> union(Set<T> setA, Set<T> setB) {
         Set<T> setUnion;
         if (setA instanceof TreeSet){
@@ -37,7 +36,6 @@ public class Sets {
     }
     
     /** 求交集 */
-    @SuppressWarnings("unchecked")
     public static <T> Set<T> intersection(Set<T> setA, Set<T> setB) {
         Set<T> setIntersection;
         T item;
@@ -57,7 +55,6 @@ public class Sets {
     }  
     
     /** 求差集 */
-    @SuppressWarnings("unchecked")
     public static <T> Set<T> difference(Set<T> setA, Set<T> setB) {
         Set<T> setDifference;
         T item;
