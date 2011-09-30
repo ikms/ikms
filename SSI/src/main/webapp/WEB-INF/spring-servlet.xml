@@ -39,8 +39,13 @@
 		</property>
 	</bean>
 	<bean id="mappingJacksonHttpMessageConverter" 
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-	
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
 	
 	<!-- Forwards requests to the "/" resource to the "welcome" view -->
 	<mvc:view-controller path="/" view-name="welcome"/>
