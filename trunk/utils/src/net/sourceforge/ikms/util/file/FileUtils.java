@@ -522,4 +522,33 @@ public class FileUtils {
         copyFile(srFilePath, dtFilePath);
         deleteFile(srFilePath);
     }
+    /**
+     * 保存文件到指定目录
+     * @param srcFile
+     *          需保存的文件
+     * @param destFileDirAndFileName
+     *          包含路径和文件名的完整路径
+     * @author Oxidy
+     * @version 0.1,20101206
+     */
+    public static void uploadFile(final File srcFile,final String dstFileDirAndFileName){
+        try {
+            InputStream in = new FileInputStream(srcFile);
+            File uploadFile = new File(dstFileDirAndFileName);
+            OutputStream out = new FileOutputStream(uploadFile);
+            byte[] buffer = new byte[1024 * 1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+            in.close();
+            out.close();
+        }catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            logger.error("没有找到对应的文件！");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            logger.error("文件上传失败！");
+        }
+    }
 }
