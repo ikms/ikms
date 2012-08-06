@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * 配置文件操作类Sun Java SDK实现(java.util.Properties)
  * 
  * @author <b>oxidy</b>, Copyright &#169; 2009-2010
- * @version 1.0, 2010-01-26
+ * @version 1.0, 26 January 2010
  */
 public class ConfigSun {
 	

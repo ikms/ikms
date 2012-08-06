@@ -7,8 +7,8 @@ package com.github.ikms.util.security.aes;
 
 /**
  * 
- * @author zhangyj
- * @version 0.1, 2011-8-5 下午03:44:27
+ * @author <b>oxidy</b>, Copyright &#169; 2003
+ * @version 1.0, 2011-8-5 下午03:44:27
  *
  */
 public class AESCryptUtils {
