@@ -1,6 +1,6 @@
 /*
  * @(#)ImageUtils.java
- * Copyright (C) 2003-2011 ikms.sourceforge.net All rights reserved
+ * Copyright (C) 2003-2011 ikms.github.com All rights reserved
  */
 
 package com.github.ikms.util.file;

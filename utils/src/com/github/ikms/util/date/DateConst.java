@@ -1,6 +1,6 @@
-/**
+/*
  * @(#)DateConstants.java
- * Copyright (C) 2003-2010 iocn.org All rights reserved
+ * Copyright (C) 2003-2010 ikms.github.com All rights reserved
  */
 package com.github.ikms.util.date;
 

@@ -1,5 +1,6 @@
-/**
+/*
  * @(#)ConfigSun.java
+ * Copyright (C) 2003-2010 ikms.github.com All rights reserved
  */
 package com.github.ikms.util.configuration;
 
@@ -13,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * 配置文件操作类Sun Java SDK实现(java.util.Properties)
  * 
  * @author <b>oxidy</b>, Copyright &#169; 2009-2010
- * @version 0.1, 2010/01/26
+ * @version 1.0, 2010-01-26
  */
 public class ConfigSun {
 	
