@@ -10,5 +10,4 @@ package com.github.ikms.util.mail;
  * @version 1.0, 23 November 2011
  */
 public class SpringMail {
-
 }
