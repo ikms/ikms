@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * 文件相关操作工具类
  * 
  * @author <b>oxidy</b>, Copyright &#169; 2003
- * @since 28 12 2009
+ * @since 28 December 2009
  */
 public class FileUtils {
 	private static Logger logger = LoggerFactory.getLogger(FileUtils.class);
