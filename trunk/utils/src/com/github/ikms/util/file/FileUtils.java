@@ -1,4 +1,4 @@
-/**
+/*
  * @(#)FileUtils.java
  * Copyright (C) 2003-2011 ikms.github.com All rights reserved
  */
@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
@@ -29,6 +30,27 @@ import org.slf4j.LoggerFactory;
  */
 public class FileUtils {
 	private static Logger logger = LoggerFactory.getLogger(FileUtils.class);
+	/**
+	 * 转换文件大小格式,例如：B,KB,MB,GB
+	 * @param fileByteSize
+	 * 			文件字节大小
+	 * @return 带单位的文件大小字符串
+	 * @version 1.0 2012-08-06
+	 */
+	public static String FormetFileSize(long fileByteSize) {
+		DecimalFormat df = new DecimalFormat("#.00");//df对象规定小数的格式，两位小数
+		String fileSizeString = "";
+		if (fileByteSize < 1024) {
+			fileSizeString = df.format((double) fileByteSize) + "B";
+		} else if (fileByteSize < 1048576) {
+			fileSizeString = df.format(((double) fileByteSize / 1024)) + "KB";
+		} else if (fileByteSize < 1073741824) {
+			fileSizeString = df.format((double) fileByteSize / 1048576) + "MB";
+		} else {
+			fileSizeString = df.format((double) fileByteSize / 1073741824) + "GB";
+		}
+		return fileSizeString;
+	}
     /**
      * 获取扩展名
      * 
