@@ -15,4 +15,7 @@ public final class ConstKey {
 	 * 默认密码：123456
 	 */
 	public final static String KEYS_DEFAULT="123456";
+	public final static String UTF8 = "utf-8";
+	public final static String GBK = "gbk";
+	public final static String GB2312 = "gb2312";
 }
