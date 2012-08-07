@@ -38,7 +38,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param str
 	 * @param toStr
 	 * @return
-	 * @author oxidy
 	 * @version 1.0,2010-10-24
 	 */
 	public static String isBlankToStr(String str, String toStr) {
@@ -53,7 +52,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * 
 	 * @param str
 	 * @return
-	 * @author oxidy
 	 * @version 1.0,2010-10-24
 	 */
 	public static String isBlankToStr(String str) {
@@ -66,7 +64,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param str
 	 *            要判断的字符串。
 	 * @return true 是数字，false 非数字
-	 * @version 1.0,2010/01/21
+	 * @version 1.0,2010-01-21
 	 */
 	public static boolean isNumeric(String str) {
 		if (str.trim().equals(""))
@@ -85,7 +83,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param str
 	 *            要判断的字符串
 	 * @return true 是字母串 false 不是字母串
-	 * @version 1.0,2010/01/21
+	 * @version 1.0,2010-01-21
 	 */
 	public static boolean isLetter(String str) {
 		Pattern pattern = Pattern.compile("[a-zA-Z]*");
@@ -104,7 +102,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param message
 	 *            要替换的toStr信息
 	 * @return 如果不为空，则返回str； 如果为空，则返回toStr
-	 * @version 1.0, 2010/01/05
+	 * @version 1.0, 2010-01-05
 	 */
 	public static String isEmptyToStr(String str, String toStr) {
 		if (str.trim().length() <= 0) {
@@ -122,7 +120,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param message
 	 *            要替换的toStr信息
 	 * @return 如果不为NULL，则返回str； 如果为NULL，则返回toStr
-	 * @version 1.0, 2010/01/05
+	 * @version 1.0, 2010-01-05
 	 */
 	public static String isNullToStr(String str, String toStr) {
 		if (str == null) {
