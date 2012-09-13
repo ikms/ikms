@@ -11,12 +11,13 @@ import org.eclipse.jetty.server.Server;
  * 
  * @author calvin
  */
-public class MiniWebServer {
+public class QuickStartServer {
 
 	public static final int PORT = 8080;
-	public static final String CONTEXT = "/ikms";
-	public static final String BASE_URL = "http://localhost:8080/ikms";
-	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web" };
+	public static final String CONTEXT = "/agile";
+	public static final String BASE_URL = "http://localhost:8080/agile";
+	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web",
+		"joda-time-jsptags", "agile"};
 
 	public static void main(String[] args) throws Exception {
 		//设定Spring的profile
