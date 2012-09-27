@@ -105,7 +105,7 @@ public class NetworkUtils {
 		try {
 			// windows下的命令，显示信息中包含有mac地址信息  
 			process = Runtime.getRuntime().exec("ipconfig /all");
-			bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream(),"utf-8"));
 			String line = null;
 			int index = -1;
 			while ((line = bufferedReader.readLine()) != null) {
@@ -144,11 +144,13 @@ public class NetworkUtils {
 	 *  
 	 * @return 
 	 * @throws Exception 
+	 * @since jdk1.6
 	 */
 	public static String getMACAddress() throws Exception {
 		// 获取本地IP对象  
 		InetAddress ia = InetAddress.getLocalHost();
-		// 获得网络接口对象（即网卡），并得到mac地址，mac地址存在于一个byte数组中。  
+		// 获得网络接口对象（即网卡），并得到mac地址，mac地址存在于一个byte数组中。
+		// JDK1.6版本以上支持。
 		byte[] mac = NetworkInterface.getByInetAddress(ia).getHardwareAddress();
 		// 下面代码是把mac地址拼装成String  
 		StringBuffer sb = new StringBuffer();
